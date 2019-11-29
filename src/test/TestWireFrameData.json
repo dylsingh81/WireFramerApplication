@@ -1,0 +1,104 @@
+{
+	"users": [
+		{
+			"key": 0,
+			"firstName": "Dylan",
+			"lastName": "Singh",
+			"wireFrames": [
+				{
+					"key": 0,
+					"name": "Homepage Template",
+					"width": "1000px",
+					"height": "1000px",
+					"time": "1700-01-01T09:28:56.321-10:00",
+					"containers": [
+						{
+							"key": 0,
+							"left": "25px",
+							"top": "25px",
+							"width": "400px",
+							"height": "400px",
+							"container-content": [
+								{
+									"key": 0,
+									"type": "label",
+									"text": "Homepage Template",
+									"left": "5px",
+									"top": "5px",	
+									"width": "20px",
+									"height": "5px",
+									"font-size": "12px",
+									"font-color": "black",
+									"border-color": "blue",
+									"background-color": "gray",
+									"border-radius": "2px"
+								},
+								{
+									"key": 1,
+									"type": "button",
+									"text": "Submit",
+									"left": "5px",
+									"top": "5px",	
+									"width": "20px",
+									"height": "5px",
+									"font-size": "12px",
+									"font-color": "black",
+									"border-color": "blue",
+									"background-color": "gray",
+									"border-radius": "2px"
+								}
+							]
+						}
+					]
+				},
+				{
+					"key": 1,
+					"name": "Login Template",
+					"width": "1200px",
+					"height": "900px",
+					"time": "1700-01-01T09:28:56.321-10:00",
+					"containers": [
+						{
+							"key": 0,
+							"left": "25px",
+							"top": "25px",
+							"width": "400px",
+							"height": "400px",
+							"container-content": [
+								{
+									"key": 0,
+									"type": "label",
+									"text": "Login Template",
+									"left": "5px",
+									"top": "5px",	
+									"width": "20px",
+									"height": "5px",
+									"font-size": "12px",
+									"font-color": "black",
+									"border-color": "blue",
+									"background-color": "gray",
+									"border-radius": "2px"
+								},
+								{
+									"key": 1,
+									"type": "button",
+									"text": "Submit",
+									"left": "5px",
+									"top": "5px",	
+									"width": "20px",
+									"height": "5px",
+									"font-size": "12px",
+									"font-color": "black",
+									"border-color": "blue",
+									"background-color": "gray",
+									"border-radius": "2px"
+								}
+							]
+						}
+					]
+				}
+			]
+				
+		}
+	]
+}
