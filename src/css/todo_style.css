@@ -53,114 +53,7 @@ div.banner {
   cursor: pointer;
 }
 
-#list_trash {
-  cursor: pointer;
-  font-size: 4vw;
-}
-#list_trash:hover {
-  color: purple;
-  cursor: pointer;
-}
 
-#list-title{
-  text-align: center !important;
-  color: indigo;
-}
-
-
-#table_headers{
-  font-size: 24px;
-  padding-left: 12px;
-  padding: 12px !important
-}
-
-.list-item{
-  border-radius: 15px;
-}
-
-.item-container{
-  padding: 12px !important;
-}
-
-.bold-text{
-  font-weight: 500 !important;
-}
-
-.item-prompt-font{
-  font-weight: 800 !important;
-  color: purple !important;
-}
-
-.list_item_card_completed {
-  color: green;
-}
-.list_item_card_not_completed {
-  color: red;
-}
-
-#completed-prompt{
-  margin-top: 12px !important;
-}
-
-#item-form-container{
-  overflow: hidden;
-}
-
-.item-form-btn{
-  float: right;
-  margin-right: 10px;
-  margin-bottom: 20px;
-}
-
-.todo-lists{
-  text-align: center;
-}
-
-.card-content{
-  text-align: left;
-}
-
-/* Button CSS */
-.fab-layout{
-  display: inline-table !important;
-  float: right;
-}
-
-.fab-layout .sub-btn{
-    margin-bottom: 30px !important;
-    background-color: white !important;
-}
-
-.fab-layout:hover .sub-btn{
-  margin-bottom: auto !important;
-}
-
-.plus-margin{
-  margin-right: 18px !important;
-}
-
-.modal-footer-buttons{
-  margin-right: 30px !important;
-}
-
-#modal-title{
-  text-align: center;
-}
-
-
-.item-btn{
-  display: inline-block !important;
-  margin-right: 10px;
-  margin-top: 2px;
-}
-
-#main-button{
-  margin-left: 5px;
-}
-
-.no-top{
-  margin-top: 0px !important;
-}
 
 
 /* Propeller buttons */
@@ -189,3 +82,84 @@ div.banner {
 .pmd-floating-action-btn.btn:hover{ overflow:hidden;}
 
 .pmd-floating-action-btn .ink{ width:50px; height:50px;}
+
+
+.edit_screen_container{
+  text-align: center;
+  margin: 0 auto;
+}
+
+
+.edit-screen {
+  margin: 0 auto;
+  max-width: 1280px;
+  width: 95%;
+}
+
+.sandbox-container{
+  background: gray;
+  border: 7px outset #1C6EA4;
+  border-radius: 6px;
+  overflow: auto;
+  height: 82vh;
+  width: 46vw;
+}
+
+.sandbox{
+  background: white;
+  overflow: auto;
+  height: 1000px;
+  width: 900px;
+  margin: 20px;
+  display: inline-block;
+  zoom: 1;
+}
+
+.menu {
+  width: 11em;
+  background: lightsteelblue;
+  color: white;
+  font-weight: bold;
+  font-size: large;
+  text-align: left;
+  border: solid 2px black;
+  border-right: none;
+  box-shadow: 0 1px 3px black;
+  align-content: center;
+  text-align: center;
+  padding: 15px;
+}
+
+.h1-divider{
+  width: 20px;
+  height:auto;
+  display:inline-block;
+}
+
+
+#controls{
+  padding-top: 20px;
+  padding-left: 15px;
+  padding-bottom: 10px;
+}
+
+#add-container-crtl{
+  background: white;
+  height: 80px;
+  width: 140px;
+  border: 1px solid black;
+}
+
+#add-label-crtl{
+  color: rgb(97, 97, 97);
+}
+
+.crtl-label{
+  color:black;
+  margin-bottom: 25px;
+  text-decoration: underline;
+}
+
+.no-padding{
+  padding: 0px !important;
+}

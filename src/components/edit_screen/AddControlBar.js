@@ -1,0 +1,74 @@
+
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { compose } from 'redux';
+import { NavLink, Redirect } from 'react-router-dom';
+import { firestoreConnect } from 'react-redux-firebase';
+import { getFirestore } from 'redux-firestore';
+
+class AddControlBar extends Component {
+    render() {
+
+        return (
+            <div className="menu" id="add-ctrl">
+                <div>
+                        <button className="material-icons waves-effect waves-light btn-small yellow darken-1">zoom_in</button>
+                        <div className="h1-divider"/>
+                        <button className="material-icons waves-effect waves-light btn-small yellow darken-1">zoom_out</button>
+                </div>
+                <hr/>
+                <div>
+                    <button className="waves-effect waves-light btn-small red lighten-2">Save</button>
+                        <div className="h1-divider"/>
+                        <button className="waves-effect waves-light btn-small red lighten-2">Cancel</button>
+                </div>
+                <hr/>
+                <div id="controls">
+                    <div id="add-container-crtl" onClick={this.test12}/>
+                    <div className="crtl-label"><label className="crtl-label">Container</label></div>
+                    
+                    <label id="add-label-crtl" onClick={this.test12}>Prompt for input:</label>
+                    <div className="crtl-label"><label className="crtl-label">Label</label></div>
+                    
+                    <button id="add-button-crtl" onClick={this.test12}>Submit</button>
+                    <div className="crtl-label"><label className="crtl-label">Button</label></div>
+                    
+                    <input type="text" value="Input" onClick={this.test12}></input>
+                    <div className="crtl-label"><label className="crtl-label">Textfield</label></div>
+                </div>
+
+            </div>
+        );
+    }
+
+    test12 = (e) =>
+    {
+        console.log("DA");
+    }
+
+}
+
+const mapStateToProps = (state) => {
+    const { users } = state.firestore.data;
+    const user = users ? users[state.firebase.auth.uid] : null;
+    //todoList.id = id;
+
+    if (user)
+        user.id = state.firebase.auth.uid;
+
+    console.log(users);
+
+    return {
+        user,
+        auth: state.firebase.auth,
+        firebase: state.firebase
+    };
+};
+
+export default compose(
+    connect(mapStateToProps),
+    firestoreConnect([
+        { collection: 'users' },
+    ]),
+)(AddControlBar);
+
