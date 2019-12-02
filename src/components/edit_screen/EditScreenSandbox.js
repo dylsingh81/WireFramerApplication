@@ -6,14 +6,56 @@ import { NavLink, Redirect } from 'react-router-dom';
 import { firestoreConnect } from 'react-redux-firebase';
 import { getFirestore } from 'redux-firestore';
 
-class EditScreenSandbox extends Component {
-    render() {
+import ResizableContainer from './ResizableContainer'
 
+class EditScreenSandbox extends Component {
+    
+    constructor() {
+        super()
+        this.state = {
+            clickedId: 0,
+        }
+    }
+
+    handleNoneSelected = (e) =>
+    {
+        this.setState({
+            clickedId: "-1",
+        })
+        console.log("handleNoneSelected")
+
+    }
+
+    handleNodeSelected = (id, e) =>
+    {
+        this.setState({
+            clickedId: id,
+        })
+
+        console.log("handleNodeSelected");
+        e.stopPropagation();
+    }
+    
+    handleSandboxSelected = (e) =>
+    {
+        this.setState({
+            clickedId: "0",
+        })
+        console.log("handleSandboxSelected")
+        e.stopPropagation();
+    }
+
+
+    render() {
+        console.log(this.state.clickedId)
         return (
-            <div className="sandbox-container">  
-                    <div className= "sandbox"></div>
+            <div className="sandbox-container" onClick={this.handleNoneSelected}>
+                <div className="sandbox" onClick = {this.handleSandboxSelected} id="0">
+                    <ResizableContainer clickedId={this.state.clickedId} onClick = {this.handleNodeSelected} id="1"/>
+                </div>
             </div>
         );
+
     }
 
 }

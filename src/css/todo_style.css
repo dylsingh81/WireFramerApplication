@@ -163,3 +163,29 @@ div.banner {
 .no-padding{
   padding: 0px !important;
 }
+
+
+.resizable .resizers .resizer{
+  width: 12px;
+  height: 12px;
+  background: white;
+  border: 1px solid black;
+  position: absolute; 
+}
+
+.resizable .resizers .resizer.top-left {
+  left: -5px;
+  top: -5px;
+}
+.resizable .resizers .resizer.top-right {
+  right: -5px;
+  top: -5px;
+}
+.resizable .resizers .resizer.bottom-left {
+  left: -5px;
+  bottom: -5px;
+}
+.resizable .resizers .resizer.bottom-right {
+  right: -5px;
+  bottom: -5px;
+}
