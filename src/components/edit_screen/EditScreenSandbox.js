@@ -14,13 +14,14 @@ class EditScreenSandbox extends Component {
         super()
         this.state = {
             clickedId: 0,
+            components: [1,]
         }
     }
 
     handleNoneSelected = (e) =>
     {
         this.setState({
-            clickedId: "-1",
+            clickedId: "-2",
         })
         console.log("handleNoneSelected")
 
@@ -39,19 +40,25 @@ class EditScreenSandbox extends Component {
     handleSandboxSelected = (e) =>
     {
         this.setState({
-            clickedId: "0",
+            clickedId: "-1",
         })
         console.log("handleSandboxSelected")
         e.stopPropagation();
     }
 
+    getId(){
 
+    }
+    //CHANGE CONTAINER TO OBJECT, THEN IN OBJECT USE TYPE TO RETURN() based on IF, of what you want. * return(<ResizeabkeLabel/>)
     render() {
         console.log(this.state.clickedId)
+        const components = this.state.components
         return (
             <div className="sandbox-container" onClick={this.handleNoneSelected}>
-                <div className="sandbox" onClick = {this.handleSandboxSelected} id="0">
-                    <ResizableContainer clickedId={this.state.clickedId} onClick = {this.handleNodeSelected} id="1"/>
+                <div className="sandbox" onClick = {this.handleSandboxSelected} id="-1">
+                {components && components.map(component => (
+                    <ResizableContainer component={component} type={component.type} clickedId={this.state.clickedId} onClick = {this.handleNodeSelected} id={component.key}/>
+                ))}
                 </div>
             </div>
         );
