@@ -9,8 +9,21 @@ import EditScreenHeader from './EditScreenHeader'
 import EditScreenSandbox from './EditScreenSandbox'
 import AddControlBar from './AddControlBar'
 import EditControlBar from './EditControlBar'
+import { editWireframeHandler } from '../../store/database/asynchHandler';
 
 class EditScreen extends Component {
+
+    updateComponent = (component) =>{
+        console.log("Update component: ");
+        let wireframe = this.props.wireframe;
+        this.props.wireframe.components[component.key] = component;
+    }
+
+    saveWF = (e) =>
+    {
+        this.props.updateWF(this.props.user);
+    }
+
     render() {
         if (!this.props.auth.uid) {
             return <Redirect to="/login" />;
@@ -23,11 +36,11 @@ class EditScreen extends Component {
                 </div>
                 <div className="row">
                     <div className="col no-padding">
-                    <AddControlBar />
+                    <AddControlBar saveWF = {this.saveWF} />
 
                     </div>
                     <div className="col no-padding">
-                    <EditScreenSandbox />
+                    <EditScreenSandbox updateComponent = {this.updateComponent} wireframe={this.props.wireframe}/>
                     </div>
                     <div className="col no-padding">
                     <EditControlBar />
@@ -40,25 +53,33 @@ class EditScreen extends Component {
 
 
 
-const mapStateToProps = (state) => {
+const mapStateToProps = (state, ownProps) => {
     const { users } = state.firestore.data;
     const user = users ? users[state.firebase.auth.uid] : null;
     //todoList.id = id;
 
-    if (user)
+    const frameId = ownProps.match.params.frameId;
+    let wireframe = []
+    if (user){
         user.id = state.firebase.auth.uid;
-
-    console.log(users);
+        const wireframes = user.wireFrames;
+        wireframe = wireframes[frameId]
+    }
 
     return {
         user,
         auth: state.firebase.auth,
-        firebase: state.firebase
+        firebase: state.firebase,
+        wireframe,
     };
 };
 
+const mapDispatchToProps = dispatch => ({
+    updateWF: user => dispatch(editWireframeHandler(user)),
+  });
+
 export default compose(
-    connect(mapStateToProps),
+    connect(mapStateToProps, mapDispatchToProps),
     firestoreConnect([
         { collection: 'users' },
     ]),

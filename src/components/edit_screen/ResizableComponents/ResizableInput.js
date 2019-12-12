@@ -10,14 +10,27 @@ import { Rnd } from "react-rnd";
 
 class ResizableLabel extends Component {
 
-    constructor() {
-        super();
-        this.state = {
-            x: 0,
-            y: 0,
-            width: 10,
-            height: 10,
-        }
+    onResize = (e, direction, ref, delta, position) => {
+        this.setState({
+            width: ref.style.width,
+            height: ref.style.height,
+            ...position,
+        });
+        let component = this.props.component;
+        component.x = position.x;
+        component.y = position.y;
+        component.height = this.state.height;
+        component.width = this.state.width;
+        this.props.updateComponent(component);
+    }
+
+    onMove = (e, d) => 
+    {
+        this.setState({ x: d.x, y: d.y })
+        let component = this.props.component;
+        component.x = d.x;
+        component.y = d.y
+        this.props.updateComponent(component);
     }
 
     render() {
@@ -62,14 +75,10 @@ class ResizableLabel extends Component {
 
         const textOnCursorStyle={
             cursor: "move",
-            height: this.state.height,
-            width: this.state.width,
         }
 
         const textOffCursorStyle={
             cursor: "pointer",
-            height: this.state.height,
-            width: this.state.width,
         }
 
         return (
@@ -78,23 +87,21 @@ class ResizableLabel extends Component {
                 style={this.props.clickedId == this.props.id ? styleOnClick : styleOffClick}
                 enableResizing={this.props.clickedId == this.props.id ? resize : resizeOffClick}
                 default={{
-                    x: 0,
-                    y: 0,
+                    x: 5,
+                    y: 5,
+                    width: this.props.component.width,
+                    height: this.props.component.height,
                 }}
                 className= {this.props.clickedId == this.props.id ? "resizable" : ""}
-                onClick = {this.props.onClick.bind(this, this.props.id)}
+                onClick = {this.props.onClick.bind(this, this.props.z)}
                 onDrag = {this.props.onDrag.bind(this, this.props.id)}
 
-                size={{ width: this.state.width,  height: this.state.height }}
-                position={{ x: this.state.x, y: this.state.y }}
-                onDragStop={(e, d) => { this.setState({ x: d.x, y: d.y }) }}
-                onResize={(e, direction, ref, delta, position) => {
-                  this.setState({
-                    width: ref.style.width,
-                    height: ref.style.height,
-                    ...position,
-                  });
-                }}
+                size={{ width: this.props.component.width, height: this.props.component.height }}
+
+                position={{ x: this.props.component.x, y: this.props.component.y }}
+                
+                onDragStop={this.onMove}
+                onResize={this.onResize}
             >
             <input disabled value="DEE" style={this.props.clickedId == this.props.id ? textOnCursorStyle : textOffCursorStyle} className="sandbox-control"/>
                 <div className='resizers'>

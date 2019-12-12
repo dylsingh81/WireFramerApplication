@@ -34,7 +34,7 @@ class EditControlBar extends Component {
                     <CircleColorPicker id="border-color-input"/>
                 </div>
                 <hr/>
-                <div className>
+                <div>
                     <label className="edit-label">Border Thickness:</label>
                     <input type="number" id="border-thick-input" className="custom-input edit-field" min="1" max="99"/>
                 </div>
@@ -56,8 +56,6 @@ const mapStateToProps = (state) => {
 
     if (user)
         user.id = state.firebase.auth.uid;
-
-    console.log(users);
 
     return {
         user,

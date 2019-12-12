@@ -10,8 +10,27 @@ import { Rnd } from "react-rnd";
 
 class ResizableContainer extends Component {
 
-    constructor() {
-        super()
+    onResize = (e, direction, ref, delta, position) => {
+        this.setState({
+            width: ref.style.width,
+            height: ref.style.height,
+            ...position,
+        });
+        let component = this.props.component;
+        component.x = position.x;
+        component.y = position.y;
+        component.height = this.state.height;
+        component.width = this.state.width;
+        this.props.updateComponent(component);
+    }
+
+    onMove = (e, d) => 
+    {
+        this.setState({ x: d.x, y: d.y })
+        let component = this.props.component;
+        component.x = d.x;
+        component.y = d.y;
+        this.props.updateComponent(component);
     }
 
     render() {
@@ -76,6 +95,13 @@ class ResizableContainer extends Component {
                 className= {this.props.clickedId == this.props.id ? "resizable" : ""}
                 onClick = {this.props.onClick.bind(this, this.props.id)}
                 onDrag = {this.props.onDrag.bind(this, this.props.id)}
+
+                size={{ width: this.props.component.width, height: this.props.component.height }}
+
+                position={{ x: this.props.component.x, y: this.props.component.y }}
+                
+                onDragStop={this.onMove}
+                onResize={this.onResize}
 
             >
                 <div className='resizers'>

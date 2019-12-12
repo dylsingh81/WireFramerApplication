@@ -60,8 +60,6 @@ const mapStateToProps = (state) => {
     if (user)
         user.id = state.firebase.auth.uid;
 
-    console.log(users);
-
     return {
         user,
         auth: state.firebase.auth,

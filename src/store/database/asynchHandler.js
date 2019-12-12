@@ -1,55 +1,50 @@
 import * as actionCreators from '../actions/actionCreators.js'
 
 export const loginHandler = ({ credentials, firebase }) => (dispatch, getState) => {
-    firebase.auth().signInWithEmailAndPassword(
-      credentials.email,
-      credentials.password,
-    ).then(() => {
-      console.log("LOGIN_SUCCESS");
-      dispatch({ type: 'LOGIN_SUCCESS' });
-    }).catch((err) => {
-      dispatch({ type: 'LOGIN_ERROR', err });
-    });
-  };
+  firebase.auth().signInWithEmailAndPassword(
+    credentials.email,
+    credentials.password,
+  ).then(() => {
+    console.log("LOGIN_SUCCESS");
+    dispatch({ type: 'LOGIN_SUCCESS' });
+  }).catch((err) => {
+    dispatch({ type: 'LOGIN_ERROR', err });
+  });
+};
 
 export const logoutHandler = (firebase) => (dispatch, getState) => {
-    firebase.auth().signOut().then(() => {
-        dispatch(actionCreators.logoutSuccess);
-    });
+  firebase.auth().signOut().then(() => {
+    dispatch(actionCreators.logoutSuccess);
+  });
 };
 
 export const registerHandler = (newUser, firebase) => (dispatch, getState, { getFirestore }) => {
-    const firestore = getFirestore();
-    firebase.auth().createUserWithEmailAndPassword(
-        newUser.email,
-        newUser.password,
-    ).then(resp => firestore.collection('users').doc(resp.user.uid).set({
-        firstName: newUser.firstName,
-        lastName: newUser.lastName,
-        initials: `${newUser.firstName[0]}${newUser.lastName[0]}`,
-        admin: false,
-        wireFrames: [],
-    })).then(() => {
-        dispatch(actionCreators.registerSuccess);
-    }).catch((err) => {
-        dispatch(actionCreators.registerError);
-    });
+  const firestore = getFirestore();
+  firebase.auth().createUserWithEmailAndPassword(
+    newUser.email,
+    newUser.password,
+  ).then(resp => firestore.collection('users').doc(resp.user.uid).set({
+    firstName: newUser.firstName,
+    lastName: newUser.lastName,
+    initials: `${newUser.firstName[0]}${newUser.lastName[0]}`,
+    admin: false,
+    wireFrames: [],
+  })).then(() => {
+    dispatch(actionCreators.registerSuccess);
+  }).catch((err) => {
+    dispatch(actionCreators.registerError);
+  });
 };
 
 
 
-export const editListHandler = (todoList) => (dispatch, getState, { getFirestore }) => {
+export const editWireframeHandler = (user) => (dispatch, getState, { getFirestore }) => {
   const firestore = getFirestore();
-  
-  firestore.collection("todoLists").doc(todoList.id).set({
-    name: todoList.name,
-    owner: todoList.owner,
-    items: todoList.items,
-    time: new Date(),
+
+  var onlineUser = firestore.collection('users').doc(user.id);
+  onlineUser.update({
+    wireFrames: user.wireFrames,
   })
-  .then(() => {
-      dispatch(actionCreators.editTodoList);
-  });
 };
 
 
@@ -57,7 +52,7 @@ export const removeListHandler = (todoList) => (dispatch, getState, { getFiresto
   const firestore = getFirestore();
 
   firestore.collection("todoLists").doc(todoList.id).delete()
-  .then(() => {
+    .then(() => {
       dispatch(actionCreators.removeTodoList);
-  });
+    });
 };

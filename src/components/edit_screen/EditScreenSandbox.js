@@ -75,48 +75,31 @@ class EditScreenSandbox extends Component {
         e.stopPropagation();
     }
 
-    getId(){
-
-    }
     //CHANGE CONTAINER TO OBJECT, THEN IN OBJECT USE TYPE TO RETURN() based on IF, of what you want. * return(<ResizeabkeLabel/>)
     render() {
-        console.log(this.state.clickedId)
-        const components = this.state.components
+        const components = this.props.wireframe.components;
+        console.log(this.props);
         return (
             <div className="sandbox-container" onClick={this.handleNoneSelected}>
-                <div className="sandbox" onClick = {this.handleSandboxSelected} id="-1">
+                <div className="sandbox" onClick = {this.handleSandboxSelected}>
                 {components && components.map(component => (
-                    <ResizableComponent onDrag = {this.handleNodeSelected} component={component} type={component.type} clickedId={this.state.clickedId} onClick = {this.handleNodeSelected} id={component.key}/>
+                    <ResizableComponent 
+                    onDrag = {this.handleNodeSelected} 
+                    component={component} 
+                    type={component.type} 
+                    clickedId={this.state.clickedId} 
+                    onClick = {this.handleNodeSelected}
+                    id={component.key} 
+                    key={component.key}
+                    updateComponent = {this.props.updateComponent}
+                    />
                 ))}
                 </div>
             </div>
         );
 
     }
-
 }
 
-const mapStateToProps = (state) => {
-    const { users } = state.firestore.data;
-    const user = users ? users[state.firebase.auth.uid] : null;
-    //todoList.id = id;
-
-    if (user)
-        user.id = state.firebase.auth.uid;
-
-    console.log(users);
-
-    return {
-        user,
-        auth: state.firebase.auth,
-        firebase: state.firebase
-    };
-};
-
-export default compose(
-    connect(mapStateToProps),
-    firestoreConnect([
-        { collection: 'users' },
-    ]),
-)(EditScreenSandbox);
+export default EditScreenSandbox;
 
