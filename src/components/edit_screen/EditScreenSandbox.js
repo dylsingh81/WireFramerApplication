@@ -14,7 +14,7 @@ class EditScreenSandbox extends Component {
         super()
         this.state = {
             clickedId: 0,
-            components: [1,]
+            components: [1,2,]
         }
     }
 
@@ -28,7 +28,7 @@ class EditScreenSandbox extends Component {
     }
 
     handleNodeSelected = (id, e) =>
-    {
+    {        
         this.setState({
             clickedId: id,
         })
@@ -57,7 +57,7 @@ class EditScreenSandbox extends Component {
             <div className="sandbox-container" onClick={this.handleNoneSelected}>
                 <div className="sandbox" onClick = {this.handleSandboxSelected} id="-1">
                 {components && components.map(component => (
-                    <ResizableContainer component={component} type={component.type} clickedId={this.state.clickedId} onClick = {this.handleNodeSelected} id={component.key}/>
+                    <ResizableContainer onDrag = {this.handleNodeSelected} component={component} type={component.type} clickedId={this.state.clickedId} onClick = {this.handleNodeSelected} id={component}/>
                 ))}
                 </div>
             </div>

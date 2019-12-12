@@ -16,6 +16,7 @@ class EditScreenSandbox extends Component {
 
     render() {
 
+        console.log(this.props);
 
         const styleOnClick = {
             display: "flex",
@@ -23,7 +24,7 @@ class EditScreenSandbox extends Component {
             justifyContent: "center",
             border: "solid 1px #ddd",
             background: "#f0f0f0",
-            position: "relative",
+            position: "absolute",
             cursor: "move"
         };
 
@@ -33,7 +34,7 @@ class EditScreenSandbox extends Component {
             justifyContent: "center",
             border: "solid 1px #ddd",
             background: "#f0f0f0",
-            position: "relative",
+            position: "absolute",
             cursor: "pointer"
         };
 
@@ -61,6 +62,8 @@ class EditScreenSandbox extends Component {
                 }}
                 className= {this.props.clickedId == this.props.id ? "resizable" : ""}
                 onClick = {this.props.onClick.bind(this, this.props.id)}
+                onDrag = {this.props.onDrag.bind(this, this.props.id)}
+
             >
                 <div className='resizers'>
                     <div className='resizer top-left'></div>
