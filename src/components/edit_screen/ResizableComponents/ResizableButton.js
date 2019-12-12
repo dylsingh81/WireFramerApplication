@@ -8,22 +8,24 @@ import { getFirestore } from 'redux-firestore';
 
 import { Rnd } from "react-rnd";
 
-class EditScreenSandbox extends Component {
+class ResizableButton extends Component {
 
     constructor() {
-        super()
+        super();
+        this.state = {
+            x: 0,
+            y: 0,
+            width: 10,
+            height: 10,
+        }
     }
 
     render() {
-
-        console.log(this.props);
 
         const styleOnClick = {
             display: "flex",
             alignItems: "center",
             justifyContent: "center",
-            border: "solid 1px #ddd",
-            background: "#f0f0f0",
             position: "absolute",
             cursor: "move"
         };
@@ -32,8 +34,6 @@ class EditScreenSandbox extends Component {
             display: "flex",
             alignItems: "center",
             justifyContent: "center",
-            border: "solid 1px #ddd",
-            background: "#f0f0f0",
             position: "absolute",
             cursor: "pointer"
         };
@@ -49,22 +49,55 @@ class EditScreenSandbox extends Component {
             topRight: true
         };
 
+        const resizeOffClick = {
+            bottom: false,
+            bottomLeft: false,
+            bottomRight: false,
+            left: false,
+            right: false,
+            top: false,
+            topLeft: false,
+            topRight: false
+        };
+
+        const textOnCursorStyle={
+            cursor: "move",
+            height: this.state.height,
+            width: this.state.width,
+        }
+
+        const textOffCursorStyle={
+            cursor: "pointer",
+            height: this.state.height,
+            width: this.state.width,
+        }
+        
+
         return (
             <Rnd
                 bounds="parent"
                 style={this.props.clickedId == this.props.id ? styleOnClick : styleOffClick}
-                enableResizing={resize}
+                enableResizing={this.props.clickedId == this.props.id ? resize : resizeOffClick}
                 default={{
                     x: 0,
                     y: 0,
-                    width: 320,
-                    height: 200
                 }}
                 className= {this.props.clickedId == this.props.id ? "resizable" : ""}
                 onClick = {this.props.onClick.bind(this, this.props.id)}
                 onDrag = {this.props.onDrag.bind(this, this.props.id)}
-
+                
+                size={{ width: this.state.width,  height: this.state.height }}
+                position={{ x: this.state.x, y: this.state.y }}
+                onDragStop={(e, d) => { this.setState({ x: d.x, y: d.y }) }}
+                onResize={(e, direction, ref, delta, position) => {
+                  this.setState({
+                    width: ref.style.width,
+                    height: ref.style.height,
+                    ...position,
+                  });
+                }}
             >
+            <button type = "button" style={this.props.clickedId == this.props.id ? textOnCursorStyle : textOffCursorStyle} className ="sandbox-button"/>
                 <div className='resizers'>
                     <div className='resizer top-left'></div>
                     <div className='resizer top-right'></div>
@@ -78,29 +111,4 @@ class EditScreenSandbox extends Component {
 
 }
 
-
-
-const mapStateToProps = (state) => {
-    const { users } = state.firestore.data;
-    const user = users ? users[state.firebase.auth.uid] : null;
-    //todoList.id = id;
-
-    if (user)
-        user.id = state.firebase.auth.uid;
-
-    console.log(users);
-
-    return {
-        user,
-        auth: state.firebase.auth,
-        firebase: state.firebase
-    };
-};
-
-export default compose(
-    connect(mapStateToProps),
-    firestoreConnect([
-        { collection: 'users' },
-    ]),
-)(EditScreenSandbox);
-
+export default ResizableButton;

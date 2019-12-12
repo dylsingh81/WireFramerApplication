@@ -33,7 +33,7 @@ class AddControlBar extends Component {
                     <button id="add-button-crtl" onClick={this.test12}>Submit</button>
                     <div className="crtl-label"><label className="crtl-label">Button</label></div>
                     
-                    <input type="text" value="Input" onClick={this.test12}></input>
+                    <input disabled className="edit-field" type="text" value="Input" onClick={this.test12}></input>
                     <div className="crtl-label"><label className="crtl-label">Textfield</label></div>
                 </div>
 
