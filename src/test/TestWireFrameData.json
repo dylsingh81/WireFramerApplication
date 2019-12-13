@@ -28,7 +28,7 @@
 								},
 								{
 									"key": 1,
-									"type": "button",
+									"type": "input",
 									"text": "Submit",
 									"x": 5,
 									"y": 5,		

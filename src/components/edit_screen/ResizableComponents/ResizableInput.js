@@ -40,7 +40,7 @@ class ResizableLabel extends Component {
             alignItems: "center",
             justifyContent: "center",
             position: "absolute",
-            cursor: "move"
+            cursor: "move",
         };
 
         const styleOffClick = {
@@ -48,7 +48,7 @@ class ResizableLabel extends Component {
             alignItems: "center",
             justifyContent: "center",
             position: "absolute",
-            cursor: "pointer"
+            cursor: "pointer",
         };
 
         const resize = {
@@ -75,10 +75,14 @@ class ResizableLabel extends Component {
 
         const textOnCursorStyle={
             cursor: "move",
+            height: this.props.component.height,
+            width: this.props.component.width,
         }
 
         const textOffCursorStyle={
             cursor: "pointer",
+            height: this.props.component.height,
+            width: this.props.component.width,
         }
 
         return (
@@ -93,7 +97,7 @@ class ResizableLabel extends Component {
                     height: this.props.component.height,
                 }}
                 className= {this.props.clickedId == this.props.id ? "resizable" : ""}
-                onClick = {this.props.onClick.bind(this, this.props.z)}
+                onClick = {this.props.onClick.bind(this, this.props.id)}
                 onDrag = {this.props.onDrag.bind(this, this.props.id)}
 
                 size={{ width: this.props.component.width, height: this.props.component.height }}
@@ -103,13 +107,13 @@ class ResizableLabel extends Component {
                 onDragStop={this.onMove}
                 onResize={this.onResize}
             >
-            <input disabled value="DEE" style={this.props.clickedId == this.props.id ? textOnCursorStyle : textOffCursorStyle} className="sandbox-control"/>
-                <div className='resizers'>
-                    <div className='resizer top-left'></div>
-                    <div className='resizer top-right'></div>
-                    <div className='resizer bottom-left'></div>
-                    <div className='resizer bottom-right'></div>
-                </div>
+                <input disabled value="DEE" style={this.props.clickedId == this.props.id ? textOnCursorStyle : textOffCursorStyle} className="sandbox-control"/>
+                    <div className='resizers'>
+                        <div className='resizer top-left'></div>
+                        <div className='resizer top-right'></div>
+                        <div className='resizer bottom-left'></div>
+                        <div className='resizer bottom-right'></div>
+                    </div>
             </Rnd>
         )
     }

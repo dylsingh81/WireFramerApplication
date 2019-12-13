@@ -24,28 +24,22 @@ class AddControlBar extends Component {
                 </div>
                 <hr/>
                 <div id="controls">
-                    <div id="add-container-crtl" onClick={this.test12}/>
+                    <div id="add-container-crtl" onClick={this.props.addContainer}/>
                     <div className="crtl-label"><label className="crtl-label">Container</label></div>
                     
-                    <label id="add-label-crtl" onClick={this.test12}>Prompt for input:</label>
+                    <label id="add-label-crtl" onClick={this.props.addLabel}>Prompt for input:</label>
                     <div className="crtl-label"><label className="crtl-label">Label</label></div>
                     
-                    <button id="add-button-crtl" onClick={this.test12}>Submit</button>
+                    <button id="add-button-crtl" onClick={this.props.addButton}>Submit</button>
                     <div className="crtl-label"><label className="crtl-label">Button</label></div>
                     
-                    <input disabled className="edit-field" type="text" value="Input" onClick={this.test12}></input>
+                    <input readonly className="edit-field" type="text" value="Input" onClick={this.props.addInput}></input>
                     <div className="crtl-label"><label className="crtl-label">Textfield</label></div>
                 </div>
 
             </div>
         );
     }
-
-    test12 = (e) =>
-    {
-        console.log("DA");
-    }
-
 }
 
 const mapStateToProps = (state) => {

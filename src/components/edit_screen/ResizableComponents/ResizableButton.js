@@ -73,14 +73,17 @@ render() {
         topRight: false
     };
 
-    const textOnCursorStyle = {
+    const textOnCursorStyle={
         cursor: "move",
+        height: this.props.component.height,
+        width: this.props.component.width,
     }
 
-    const textOffCursorStyle = {
+    const textOffCursorStyle={
         cursor: "pointer",
+        height: this.props.component.height,
+        width: this.props.component.width,
     }
-    console.log(this.props.component.height);
 
     return (
         <Rnd
@@ -105,7 +108,7 @@ render() {
             onResize={this.onResize}
 
         >
-            <button type="button" style={{width: this.props.component.width, height: this.props.component.height}} className="sandbox-button" />
+            <button type="button" style={this.props.clickedId == this.props.id ? textOnCursorStyle : textOffCursorStyle} className="sandbox-button" />
             <div className='resizers'>
                 <div className='resizer top-left'></div>
                 <div className='resizer top-right'></div>

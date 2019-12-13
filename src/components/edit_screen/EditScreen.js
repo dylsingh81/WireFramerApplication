@@ -13,15 +13,97 @@ import { editWireframeHandler } from '../../store/database/asynchHandler';
 
 class EditScreen extends Component {
 
-    updateComponent = (component) =>{
+    constructor(props) {
+        super(props);
+        this.state = {
+            saved: false,
+            currentWF: null,
+        }
+    }
+
+    updateComponent = (component) => {
         console.log("Update component: ");
-        let wireframe = this.props.wireframe;
         this.props.wireframe.components[component.key] = component;
     }
 
-    saveWF = (e) =>
-    {
+    saveWF = (e) => {
         this.props.updateWF(this.props.user);
+    }
+
+    addContainer = (e) => {
+        let newContainer = {
+            "key": this.props.wireframe.components.length,
+            "type": "container",
+            "text": "",
+            "x": 5,
+            "y": 5,
+            "width": "100px",
+            "height": "100px",
+            "font-size": "12px",
+            "font-color": "black",
+            "border-color": "blue",
+            "background-color": "gray",
+            "border-radius": "2px"
+        }
+        this.props.wireframe.components.push(newContainer);
+        this.forceUpdate();
+    }
+
+    addLabel = (e) => {
+        let newLabel = {
+            "key": this.props.wireframe.components.length,
+            "type": "label",
+            "text": "Prompt for input",
+            "x": 5,
+            "y": 5,
+            "width": "85px",
+            "height": "30px",
+            "font-size": "12px",
+            "font-color": "black",
+            "border-color": "blue",
+            "background-color": "gray",
+            "border-radius": "2px"
+        }
+        this.props.wireframe.components.push(newLabel);
+        this.forceUpdate();
+    }
+
+    addButton = (e) => {
+        let newButton = {
+            "key": this.props.wireframe.components.length,
+            "type": "button",
+            "text": "",
+            "x": 5,
+            "y": 5,
+            "width": "85px",
+            "height": "30px",
+            "font-size": "12px",
+            "font-color": "black",
+            "border-color": "blue",
+            "background-color": "gray",
+            "border-radius": "2px"
+        }
+        this.props.wireframe.components.push(newButton);
+        this.forceUpdate();
+    }
+
+    addInput = (e) => {
+        let newInput = {
+            "key": this.props.wireframe.components.length,
+            "type": "input",
+            "text": "",
+            "x": 5,
+            "y": 5,
+            "width": "85",
+            "height": "30px",
+            "font-size": "12px",
+            "font-color": "black",
+            "border-color": "blue",
+            "background-color": "gray",
+            "border-radius": "2px"
+        }
+        this.props.wireframe.components.push(newInput);
+        this.forceUpdate();
     }
 
     render() {
@@ -36,14 +118,19 @@ class EditScreen extends Component {
                 </div>
                 <div className="row">
                     <div className="col no-padding">
-                    <AddControlBar saveWF = {this.saveWF} />
+                        <AddControlBar 
+                        addContainer = {this.addContainer}
+                        addLabel = {this.addLabel}
+                        addButton = {this.addButton}
+                        addInput = {this.addInput}
+                        saveWF={this.saveWF} />
 
                     </div>
                     <div className="col no-padding">
-                    <EditScreenSandbox updateComponent = {this.updateComponent} wireframe={this.props.wireframe}/>
+                        <EditScreenSandbox updateComponent={this.updateComponent} wireframe={this.props.wireframe} />
                     </div>
                     <div className="col no-padding">
-                    <EditControlBar />
+                        <EditControlBar />
                     </div>
                 </div>
             </div>
@@ -60,7 +147,7 @@ const mapStateToProps = (state, ownProps) => {
 
     const frameId = ownProps.match.params.frameId;
     let wireframe = []
-    if (user){
+    if (user) {
         user.id = state.firebase.auth.uid;
         const wireframes = user.wireFrames;
         wireframe = wireframes[frameId]
@@ -76,7 +163,7 @@ const mapStateToProps = (state, ownProps) => {
 
 const mapDispatchToProps = dispatch => ({
     updateWF: user => dispatch(editWireframeHandler(user)),
-  });
+});
 
 export default compose(
     connect(mapStateToProps, mapDispatchToProps),
