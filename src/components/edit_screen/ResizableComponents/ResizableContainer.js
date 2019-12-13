@@ -21,7 +21,7 @@ class ResizableContainer extends Component {
         component.y = position.y;
         component.height = this.state.height;
         component.width = this.state.width;
-        this.props.updateComponent(component);
+        this.props.updateComponent(component, this.props.id);
     }
 
     onMove = (e, d) => 
@@ -30,7 +30,7 @@ class ResizableContainer extends Component {
         let component = this.props.component;
         component.x = d.x;
         component.y = d.y;
-        this.props.updateComponent(component);
+        this.props.updateComponent(component, this.props.id);
     }
 
     render() {
@@ -44,8 +44,15 @@ class ResizableContainer extends Component {
             border: "solid 1px #ddd",
             background: "#f0f0f0",
             position: "absolute",
-            cursor: "move"
-        };
+            cursor: "move",
+            fontSize: this.props.component.font_size,
+            fontColor: this.props.component.font_color,
+            borderColor: this.props.component.border_color,
+            backgroundColor: this.props.component.background_color,
+            borderRadius: this.props.component.border_radius,
+            borderWidth: this.props.component.border_width,
+            borderStyle: "solid",
+        }
 
         const styleOffClick = {
             display: "flex",
@@ -54,7 +61,14 @@ class ResizableContainer extends Component {
             border: "solid 1px #ddd",
             background: "#f0f0f0",
             position: "absolute",
-            cursor: "pointer"
+            cursor: "pointer",
+            fontSize: this.props.component.font_size,
+            fontColor: this.props.component.font_color,
+            borderColor: this.props.component.border_color,
+            backgroundColor: this.props.component.background_color,
+            borderRadius: this.props.component.border_radius,
+            borderWidth: this.props.component.border_width,
+            borderStyle: "solid",
         };
 
         const resize = {
@@ -79,6 +93,7 @@ class ResizableContainer extends Component {
             topLeft: false,
             topRight: false
         };
+    
 
 
         return (

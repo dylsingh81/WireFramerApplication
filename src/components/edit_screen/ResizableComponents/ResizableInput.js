@@ -21,7 +21,7 @@ class ResizableLabel extends Component {
         component.y = position.y;
         component.height = this.state.height;
         component.width = this.state.width;
-        this.props.updateComponent(component);
+        this.props.updateComponent(component, this.props.id);
     }
 
     onMove = (e, d) => 
@@ -30,7 +30,7 @@ class ResizableLabel extends Component {
         let component = this.props.component;
         component.x = d.x;
         component.y = d.y
-        this.props.updateComponent(component);
+        this.props.updateComponent(component, this.props.id);
     }
 
     render() {
@@ -41,6 +41,8 @@ class ResizableLabel extends Component {
             justifyContent: "center",
             position: "absolute",
             cursor: "move",
+            zIndex: "1",
+            position: "absolute",
         };
 
         const styleOffClick = {
@@ -49,6 +51,8 @@ class ResizableLabel extends Component {
             justifyContent: "center",
             position: "absolute",
             cursor: "pointer",
+            zIndex: "1",
+            position: "absolute",
         };
 
         const resize = {
@@ -77,14 +81,35 @@ class ResizableLabel extends Component {
             cursor: "move",
             height: this.props.component.height,
             width: this.props.component.width,
+            fontSize: this.props.component.font_size,
+            fontColor: this.props.component.font_color,
+            borderColor: this.props.component.border_color,
+            backgroundColor: this.props.component.background_color,
+            borderRadius: this.props.component.border_radius,
+            borderWidth: this.props.component.border_width,
+            borderStyle: "solid",
+            overflow: "hidden",   
         }
-
+    
         const textOffCursorStyle={
             cursor: "pointer",
             height: this.props.component.height,
             width: this.props.component.width,
+            fontSize: this.props.component.font_size,
+            fontColor: this.props.component.font_color,
+            borderColor: this.props.component.border_color,
+            backgroundColor: this.props.component.background_color,
+            borderRadius: this.props.component.border_radius,
+            borderWidth: this.props.component.border_width,
+            borderStyle: "solid",
+            overflow: "hidden",   
         }
 
+        const resizers={
+            zIndex: "0",
+        }
+    
+    
         return (
             <Rnd
                 bounds="parent"
@@ -107,8 +132,8 @@ class ResizableLabel extends Component {
                 onDragStop={this.onMove}
                 onResize={this.onResize}
             >
-                <input disabled value="DEE" style={this.props.clickedId == this.props.id ? textOnCursorStyle : textOffCursorStyle} className="sandbox-control"/>
-                    <div className='resizers'>
+                <input readOnly value={this.props.component.text} style={this.props.clickedId == this.props.id ? textOnCursorStyle : textOffCursorStyle} className = "sandbox-control" />
+                    <div className='resizers' style = {resizers}>
                         <div className='resizer top-left'></div>
                         <div className='resizer top-right'></div>
                         <div className='resizer bottom-left'></div>

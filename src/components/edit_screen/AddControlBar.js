@@ -33,7 +33,7 @@ class AddControlBar extends Component {
                     <button id="add-button-crtl" onClick={this.props.addButton}>Submit</button>
                     <div className="crtl-label"><label className="crtl-label">Button</label></div>
                     
-                    <input readonly className="edit-field" type="text" value="Input" onClick={this.props.addInput}></input>
+                    <input readOnly className="edit-field" type="text" value="Input" onClick={this.props.addInput}></input>
                     <div className="crtl-label"><label className="crtl-label">Textfield</label></div>
                 </div>
 

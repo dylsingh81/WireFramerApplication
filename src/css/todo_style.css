@@ -185,8 +185,8 @@ div.banner {
   color: black;
   font-size: 13px;
   display: inline-block;
-  margin-top: 20px;
-  margin-bottom: 20px;
+  margin-top: 18px;
+  margin-bottom: 18px;
 }
 .color-picker{
   display: inline-block !important;
@@ -214,13 +214,16 @@ div.banner {
 }
 
 input.edit-field{
-  border: 3px solid gray !important;
-  border-radius: 4px !important;
-  height: 35px !important;
   font-size: 100% !important;
   background: whitesmoke !important;
   line-height: 1.15 !important;
   margin-top: 8px !important;
+}
+
+.sandbox-label{
+  text-align: center;
+  vertical-align: middle !important;
+  display: table-cell !important;
 }
 
 input.edit-field:focus {
@@ -230,10 +233,6 @@ input.edit-field:focus {
 
 
 input.sandbox-control{
-  border: 3px solid gray !important;
-  border-radius: 4px !important;
-  font-size: 100% !important;
-  background: whitesmoke !important;
   line-height: 1.15 !important;
   margin-top: 8px !important;
   text-align: center;
@@ -243,15 +242,7 @@ input.sandbox-control{
   box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
 }
 
-.sandbox-button:focus{
-  -webkit-appearance: button;
-    -webkit-writing-mode: horizontal-tb !important;
-    background-color: buttonface!important;
-    box-sizing: border-box!important;
-    margin: 0em!important;
-    padding: 1px 6px!important;
-    border-width: 2px!important;
-    border-style: outset!important;
-    border-color: buttonface!important;
-    border-image: initial !important;
+.sandbox-button:active {
+  box-shadow: 0 1px #666;
+  transform: translateY(0px);
 }

@@ -21,7 +21,7 @@ class ResizableButton extends Component {
         component.y = position.y;
         component.height = this.state.height;
         component.width = this.state.width;
-        this.props.updateComponent(component);
+        this.props.updateComponent(component, this.props.id);
     }
 
     onMove = (e, d) => 
@@ -30,7 +30,7 @@ class ResizableButton extends Component {
         let component = this.props.component;
         component.x = d.x;
         component.y = d.y;
-        this.props.updateComponent(component);
+        this.props.updateComponent(component, this.props.id);
     }
 
 render() {
@@ -40,7 +40,9 @@ render() {
         alignItems: "center",
         justifyContent: "center",
         position: "absolute",
-        cursor: "move"
+        cursor: "move",
+        zIndex: "1",
+        position: "absolute",
     };
 
     const styleOffClick = {
@@ -48,7 +50,9 @@ render() {
         alignItems: "center",
         justifyContent: "center",
         position: "absolute",
-        cursor: "pointer"
+        cursor: "pointer",
+        zIndex: "1",
+        position: "absolute",
     };
 
     const resize = {
@@ -77,12 +81,34 @@ render() {
         cursor: "move",
         height: this.props.component.height,
         width: this.props.component.width,
+        fontSize: this.props.component.font_size,
+        fontColor: this.props.component.font_color,
+        borderColor: this.props.component.border_color,
+        backgroundColor: this.props.component.background_color,
+        borderRadius: this.props.component.border_radius,
+        borderWidth: this.props.component.border_width,
+        borderStyle: "solid",
+        overflow: "hidden",   
+        position: "absolute",
     }
 
     const textOffCursorStyle={
         cursor: "pointer",
         height: this.props.component.height,
         width: this.props.component.width,
+        fontSize: this.props.component.font_size,
+        fontColor: this.props.component.font_color,
+        borderColor: this.props.component.border_color,
+        backgroundColor: this.props.component.background_color,
+        borderRadius: this.props.component.border_radius,
+        borderWidth: this.props.component.border_width,
+        borderStyle: "solid",
+        overflow: "hidden",   
+        position: "absolute",
+    }
+
+    const resizers={
+        zIndex: "0",
     }
 
     return (
@@ -108,8 +134,10 @@ render() {
             onResize={this.onResize}
 
         >
-            <button type="button" style={this.props.clickedId == this.props.id ? textOnCursorStyle : textOffCursorStyle} className="sandbox-button" />
-            <div className='resizers'>
+            <button type="button" 
+            style={this.props.clickedId == this.props.id ? textOnCursorStyle : textOffCursorStyle} 
+        className="sandbox-button">{this.props.component.text}</button>
+            <div className='resizers' style = {resizers}>
                 <div className='resizer top-left'></div>
                 <div className='resizer top-right'></div>
                 <div className='resizer bottom-left'></div>

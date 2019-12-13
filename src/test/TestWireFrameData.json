@@ -10,7 +10,11 @@
 					"name": "Homepage Template",
 					"width": "1000px",
 					"height": "1000px",
-					"time": "1700-01-01T09:28:56.321-10:00",
+					"border_color": "blue",
+					"background_color": "gray",
+					"border_radius": "2px",
+					"border_width": "1px",
+					"time": "1700_01_01T09:28:56.321_10:00",
 					"components": [
 						{
 									"key": 0,
@@ -20,11 +24,11 @@
 									"y": 5,	
 									"width": "20px",
 									"height": "5px",
-									"font-size": "12px",
-									"font-color": "black",
-									"border-color": "blue",
-									"background-color": "gray",
-									"border-radius": "2px"
+									"font_size": "12px",
+									"border_color": "blue",
+									"background_color": "#194d33",
+									"border_radius": "2px",
+									"border_width": "1px"
 								},
 								{
 									"key": 1,
@@ -34,11 +38,11 @@
 									"y": 5,		
 									"width": "20px",
 									"height": "5px",
-									"font-size": "12px",
-									"font-color": "black",
-									"border-color": "blue",
-									"background-color": "gray",
-									"border-radius": "2px"
+									"font_size": "12px",
+									"border_color": "blue",
+									"background_color": "#194d33",
+									"border_radius": "2px",
+									"border_width": "1px"
 								}
 							]
 						},
@@ -47,21 +51,25 @@
 					"name": "Login Template",
 					"width": "1200px",
 					"height": "900px",
-					"time": "1700-01-01T09:28:56.321-10:00",
+					"border_color": "black",
+					"background_color": "white",
+					"border_radius": "1px",
+					"border_width": "1px",
+					"time": "1700_01_01T09:28:56.321_10:00",
 					"components": [
 						{
 									"key": 0,
 									"type": "label",
-									"text": "Homepage Template",
+									"text": "Login Template",
 									"x": 5,
 									"y": 5,	
 									"width": "20px",
 									"height": "5px",
-									"font-size": "12px",
-									"font-color": "black",
-									"border-color": "blue",
-									"background-color": "gray",
-									"border-radius": "2px"
+									"font_size": "12px",
+									"border_color": "blue",
+									"background_color": "#194d33",
+									"border_radius": "2px",
+									"border_width": "1px"
 								},
 								{
 									"key": 1,
@@ -71,11 +79,11 @@
 									"y": 5,	
 									"width": "72px",
 									"height": "20px",
-									"font-size": "12px",
-									"font-color": "black",
-									"border-color": "blue",
-									"background-color": "gray",
-									"border-radius": "2px"
+									"font_size": "12px",
+									"border_color": "blue",
+									"background_color": "#194d33",
+									"border_radius": "2px",
+									"border_width": "1px"
 								}
 							]
 				}

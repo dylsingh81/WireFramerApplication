@@ -9,58 +9,19 @@ import { getFirestore } from 'redux-firestore';
 import ResizableComponent from './ResizableComponents/ResizableComponent'
 
 class EditScreenSandbox extends Component {
+
     
-    constructor() {
-        super()
-        this.state = {
-            clickedId: -2,
-            components: [
-                {
-                    key: 0,
-                    type: "label",
-                    text: "Homepage Template",
-                    left: "5px",
-                    top: "5px",	
-                    width: "20px",
-                    height: "5px",
-                    fontSize: "12px",
-                    fontColor: "black",
-                    borderColor: "blue",
-                    backgroundColor: "gray",
-                    borderRadius: "2px",
-                },
-                {
-                    key: 1,
-                    type: "button",
-                    text: "Submit",
-                    left: "5px",
-                    top: "5px",	
-                    width: "20px",
-                    height: "5px",
-                    fontSize: "12px",
-                    fontColor: "black",
-                    borderColor: "blue",
-                    backgroundColor: "gray",
-                    borderRadius: "2px",
-                }
-            ],
-        }
-    }
 
     handleNoneSelected = (e) =>
     {
-        this.setState({
-            clickedId: "-2",
-        })
+        this.props.updateClickedId(-2);
         console.log("handleNoneSelected")
 
     }
 
     handleNodeSelected = (id, e) =>
-    {        
-        this.setState({
-            clickedId: id,
-        })
+    {       
+        this.props.updateClickedId(id);
 
         console.log("handleNodeSelected");
         e.stopPropagation();
@@ -68,9 +29,8 @@ class EditScreenSandbox extends Component {
     
     handleSandboxSelected = (e) =>
     {
-        this.setState({
-            clickedId: "-1",
-        })
+        this.props.updateClickedId(-1);
+
         console.log("handleSandboxSelected")
         e.stopPropagation();
     }
@@ -78,22 +38,28 @@ class EditScreenSandbox extends Component {
     //CHANGE CONTAINER TO OBJECT, THEN IN OBJECT USE TYPE TO RETURN() based on IF, of what you want. * return(<ResizeabkeLabel/>)
     render() {
         const components = this.props.wireframe.components;
+        const handleNodeSelected = this.handleNodeSelected;
+        const clickedId = this.props.clickedId;
+        const updateComponent = this.props.updateComponent
         console.log(this.props);
         return (
             <div className="sandbox-container" onClick={this.handleNoneSelected}>
                 <div className="sandbox" onClick = {this.handleSandboxSelected}>
-                {components && components.map(component => (
-                    <ResizableComponent 
-                    onDrag = {this.handleNodeSelected} 
-                    component={component} 
-                    type={component.type} 
-                    clickedId={this.state.clickedId} 
-                    onClick = {this.handleNodeSelected}
-                    id={component.key} 
-                    key={component.key}
-                    updateComponent = {this.props.updateComponent}
+                {components && components.map(function(component, i) {
+                    return(
+                        <ResizableComponent 
+                        onDrag = {handleNodeSelected} 
+                        component={component} 
+                        type={component.type} 
+                        clickedId={clickedId} 
+                        onClick = {handleNodeSelected}
+                        id={i} 
+                        key={i}
+                        updateComponent = {updateComponent}
                     />
-                ))}
+                    )
+                    }
+                )}
                 </div>
             </div>
         );

@@ -11,7 +11,7 @@ class CircleColorPicker extends React.Component {
   state = {
     displayColorPicker: false,
     color: {
-      r: '241',
+      r: '0',
       g: '112',
       b: '19',
       a: '1',
@@ -27,7 +27,7 @@ class CircleColorPicker extends React.Component {
   };
 
   handleChange = (color) => {
-    this.setState({ color: color.rgb })
+    this.props.handleColorChange(color);
   };
 
   render() {
@@ -38,7 +38,7 @@ class CircleColorPicker extends React.Component {
           width: '20px',
           height: '20px',
           borderRadius: '10px',
-          background: `rgba(${ this.state.color.r }, ${ this.state.color.g }, ${ this.state.color.b }, ${ this.state.color.a })`,
+          background: this.props.color,
         },
         swatch: {
           padding: '0px',
@@ -69,7 +69,7 @@ class CircleColorPicker extends React.Component {
         </div>
         { this.state.displayColorPicker ? <div style={ styles.popover }>
           <div style={ styles.cover } onClick={ this.handleClose }/>
-          <SketchPicker color={ this.state.color } onChange={ this.handleChange } />
+          <SketchPicker color={ this.props.color } onChange={ this.handleChange } />
         </div> : null }
 
       </div>
