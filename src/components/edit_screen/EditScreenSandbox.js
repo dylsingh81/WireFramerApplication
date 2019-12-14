@@ -56,12 +56,24 @@ class EditScreenSandbox extends Component {
         }
 
         console.log(wireframe);
-        const sandboxStyle = {
-            backgroundColor: wireframe.background_color,
-            height: wireframe.height + "px",
-            width: wireframe.width + "px",
+        
+        let sandboxStyle = {
+            height: wireframe.height > 5000 ? "5000px" : wireframe.height + "px",
+            width: wireframe.width > 5000 ? "5000px" : wireframe.width + "px",
             transform: "scale( "+ this.props.currentZoom + ")",
         };
+        if(wireframe.background_color){
+
+            sandboxStyle = {
+                backgroundColor: "rgba(" + wireframe.background_color.r  + "," + 
+                                            wireframe.background_color.g  + "," + 
+                                            wireframe.background_color.b  + "," + 
+                                            wireframe.background_color.a  + ")",
+                height: wireframe.height > 5000 ? "5000px" : wireframe.height + "px",
+                width: wireframe.width > 5000 ? "5000px" : wireframe.width + "px",
+                transform: "scale( "+ this.props.currentZoom + ")",
+            };
+        }
 
         const zoomStyle = {
             transform: "scale( "+ this.props.currentZoom + ")",

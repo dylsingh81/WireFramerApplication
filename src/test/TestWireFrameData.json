@@ -7,85 +7,363 @@
 			"wireFrames": [
 				{
 					"key": 0,
-					"name": "Homepage Template",
-					"width": 900,
-					"height": 1000,
-					"border_color": "blue",
-					"background_color": "white",
-					"border_radius": "2px",
-					"border_width": "1px",
+					"name": "Login Template",
+					"width": 560,
+					"height": 510,
+					"background_color": {
+						"r": "248",
+						"g": "245",
+						"b": "205",
+						"a": "1"
+					},
 					"time": "1700_01_01T09:28:56.321_10:00",
 					"components": [
 						{
-									"key": 0,
-									"type": "label",
-									"text": "Homepage Template",
-									"x": 5,
-									"y": 5,	
-									"width": "20px",
-									"height": "5px",
-									"font_size": "12px",
-									"border_color": "blue",
-									"background_color": "#194d33",
-									"border_radius": "2px",
-									"border_width": "1px"
-								},
-								{
-									"key": 1,
-									"type": "input",
-									"text": "Submit",
-									"x": 5,
-									"y": 5,		
-									"width": "20px",
-									"height": "5px",
-									"font_size": "12px",
-									"border_color": "blue",
-									"background_color": "#194d33",
-									"border_radius": "2px",
-									"border_width": "1px"
-								}
-							]
+							"key": 0,
+							"background_color": {
+								"r": "221",
+								"g": "196",
+								"b": "196",
+								"a": "1"
+							},
+							"border_color": {
+								"r": "0",
+								"g": "0",
+								"b": "0",
+								"a": "1"
+							},
+							"border_radius": "1px",
+							"border_width": "2px",
+							"font_color": {
+								"r": "0",
+								"g": "0",
+								"b": "0",
+								"a": "1"
+							},
+							"font_size": "12px",
+							"height": "245px",
+							"text": "",
+							"type": "container",
+							"width": "355px",
+							"x": 81,
+							"y": 49
 						},
+						{
+							"key": 1,
+							"background_color": {
+								"r": "250",
+								"g": "250",
+								"b": "250",
+								"a": "0"
+							},
+							"border_color": {
+								"r": "0",
+								"g": "0",
+								"b": "0",
+								"a": "1"
+							},
+							"border_radius": "1px",
+							"border_width": "0px",
+							"font_color": {
+								"r": "236",
+								"g": "97",
+								"b": "97",
+								"a": "1"
+							},
+							"font_size": "20px",
+							"height": "31px",
+							"text": "Login",
+							"type": "label",
+							"width": "253px",
+							"x": 126,
+							"y": 65
+						},
+						{
+							"key": 2,
+							"background_color": {
+								"r": "255",
+								"g": "255",
+								"b": "255",
+								"a": "0"
+							},
+							"border_color": {
+								"r": "0",
+								"g": "0",
+								"b": "0",
+								"a": "1"
+							},
+							"border_radius": "1px",
+							"border_width": "0px",
+							"font_color": {
+								"r": "62",
+								"g": "23",
+								"b": "211",
+								"a": "1"
+							},
+							"font_size": "14px",
+							"height": "25px",
+							"text": "Username",
+							"type": "label",
+							"width": "101px",
+							"x": 86,
+							"y": 135
+						},
+						{
+							"key": 3,
+							"background_color": {
+								"r": "255",
+								"g": "255",
+								"b": "255",
+								"a": "1"
+							},
+							"border_color": {
+								"r": "0",
+								"g": "0",
+								"b": "0",
+								"a": "0.8"
+							},
+							"border_radius": "1px",
+							"border_width": "1px",
+							"font_color": {
+								"r": "200",
+								"g": "200",
+								"b": "200",
+								"a": "1"
+							},
+							"font_size": "12px",
+							"height": "35px",
+							"text": "Input...",
+							"type": "input",
+							"width": "193px",
+							"x": 201,
+							"y": 127
+						},
+						{
+							"key": 4,
+							"background_color": {
+								"r": "255",
+								"g": "255",
+								"b": "255",
+								"a": "0"
+							},
+							"border_color": {
+								"r": "0",
+								"g": "0",
+								"b": "0",
+								"a": "1"
+							},
+							"border_radius": "1px",
+							"border_width": "0px",
+							"font_color": {
+								"r": "133",
+								"g": "19",
+								"b": "182",
+								"a": "1"
+							},
+							"font_size": "14px",
+							"height": "25px",
+							"text": "Password",
+							"type": "label",
+							"width": "101px",
+							"x": 86,
+							"y": 194
+						},
+						{
+							"key": 5,
+							"background_color": {
+								"r": "255",
+								"g": "255",
+								"b": "255",
+								"a": "1"
+							},
+							"border_color": {
+								"r": "0",
+								"g": "0",
+								"b": "0",
+								"a": "0.8"
+							},
+							"border_radius": "1px",
+							"border_width": "1px",
+							"font_color": {
+								"r": "200",
+								"g": "200",
+								"b": "200",
+								"a": "1"
+							},
+							"font_size": "12px",
+							"height": "35px",
+							"text": "Input...",
+							"type": "input",
+							"width": "193px",
+							"x": 201,
+							"y": 198
+						},
+						{
+							"key": 6,
+							"background_color": {
+								"r": "243",
+								"g": "107",
+								"b": "107",
+								"a": "1"
+							},
+							"border_color": {
+								"r": "0",
+								"g": "0",
+								"b": "0",
+								"a": "0.8"
+							},
+							"border_radius": "8px",
+							"border_width": "1px",
+							"font_color": {
+								"r": "0",
+								"g": "0",
+								"b": "0",
+								"a": "1"
+							},
+							"font_size": "12px",
+							"height": "30px",
+							"text": "Submit",
+							"type": "button",
+							"width": "85px",
+							"x": 211,
+							"y": 243
+						}
+					]
+				},
 				{
 					"key": 1,
-					"name": "Login Template",
-					"width": 900,
+					"name": "Random Template",
+					"width": 580,
 					"height": 700,
-					"border_color": "black",
-					"background_color": "white",
-					"border_radius": "1px",
-					"border_width": "1px",
+					"background_color": {
+						"r": "44",
+						"g": "67",
+						"b": "81",
+						"a": "1"
+					},
 					"time": "1700_01_01T09:28:56.321_10:00",
 					"components": [
 						{
-									"key": 0,
-									"type": "label",
-									"text": "Login Template",
-									"x": 5,
-									"y": 5,	
-									"width": "20px",
-									"height": "5px",
-									"font_size": "12px",
-									"border_color": "blue",
-									"background_color": "#194d33",
-									"border_radius": "2px",
-									"border_width": "1px"
-								},
-								{
-									"key": 1,
-									"type": "button",
-									"text": "Submit",
-									"x": 5,
-									"y": 5,	
-									"width": "72px",
-									"height": "20px",
-									"font_size": "12px",
-									"border_color": "blue",
-									"background_color": "#194d33",
-									"border_radius": "2px",
-									"border_width": "1px"
-								}
-							]
+							"key": 0,
+							"background_color": {
+								"r": "56",
+								"g": "51",
+								"b": "51",
+								"a": "1"
+							},
+							"border_color": {
+								"r": "0",
+								"g": "0",
+								"b": "0",
+								"a": "1"
+							},
+							"border_radius": "65px",
+							"border_width": "2px",
+							"font_color": {
+								"r": "0",
+								"g": "0",
+								"b": "0",
+								"a": "1"
+							},
+							"font_size": "12px",
+							"height": "420px",
+							"text": "",
+							"type": "container",
+							"width": "473px",
+							"x": 66,
+							"y": 46
+						},
+						{
+							"key": 1,
+							"background_color": {
+								"r": "0",
+								"g": "0",
+								"b": "0",
+								"a": "1"
+							},
+							"border_color": {
+								"r": "231",
+								"g": "12",
+								"b": "12",
+								"a": "1"
+							},
+							"border_radius": "17px",
+							"border_width": "4px",
+							"font_color": {
+								"r": "0",
+								"g": "0",
+								"b": "0",
+								"a": "1"
+							},
+							"font_size": "12px",
+							"height": "56px",
+							"text": "",
+							"type": "container",
+							"width": "119px",
+							"x": 252,
+							"y": 322
+						},
+						{
+							"key": 2,
+							"background_color": {
+								"r": "216",
+								"g": "33",
+								"b": "33",
+								"a": "1"
+							},
+							"border_color": {
+								"r": "0",
+								"g": "0",
+								"b": "0",
+								"a": "1"
+							},
+							"border_radius": "35px",
+							"border_width": "4px",
+							"font_color": {
+								"r": "0",
+								"g": "0",
+								"b": "0",
+								"a": "1"
+							},
+							"font_size": "12px",
+							"height": "100px",
+							"text": "",
+							"type": "container",
+							"width": "100px",
+							"x": 388,
+							"y": 163
+						},
+						{
+							"key": 3,
+							"background_color": {
+								"r": "216",
+								"g": "33",
+								"b": "33",
+								"a": "1"
+							},
+							"border_color": {
+								"r": "0",
+								"g": "0",
+								"b": "0",
+								"a": "1"
+							},
+							"border_radius": "35px",
+							"border_width": "4px",
+							"font_color": {
+								"r": "0",
+								"g": "0",
+								"b": "0",
+								"a": "1"
+							},
+							"font_size": "12px",
+							"height": "100px",
+							"text": "",
+							"type": "container",
+							"width": "100px",
+							"x": 133,
+							"y": 163
+						}
+					]
 				}
 			]
 		}

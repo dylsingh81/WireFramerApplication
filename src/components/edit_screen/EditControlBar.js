@@ -10,18 +10,29 @@ import CircleColorPicker from './CircleColorPicker.js';
 
 class EditControlBar extends Component {
 
+    handleFontColorChange = (color) =>
+    {
+        const component = this.props.clickedComponent;
+        this.props.clickedComponent.font_color = color.rgb;
+        this.props.update();
+        this.forceUpdate();
+    }
+
     handleBackgroundColorChange = (color) =>
     {
         const component = this.props.clickedComponent;
-        this.props.clickedComponent.background_color = color.hex;
+        this.props.clickedComponent.background_color = color.rgb;
+        //this.props.clickedComponent.background_color_opacity = color.rgb.a
         this.props.update();
+        this.forceUpdate();
     }
 
     handleBorderColorChange = (color) =>
     {
         const component = this.props.clickedComponent;
-        this.props.clickedComponent.border_color = color.hex;
+        this.props.clickedComponent.border_color = color.rgb;
         this.props.update();
+        this.forceUpdate();
     }
 
     handleTextChange = (e) =>
@@ -88,6 +99,11 @@ class EditControlBar extends Component {
                 </div>
                 <hr/>
                 <div>
+                    <label className="edit-label">Font Color:</label>
+                    <CircleColorPicker handleColorChange = {this.handleFontColorChange} color= {component.font_color ? component.font_color : defaultColor} id="font-color-input"/>
+                </div>
+                <hr/>
+                <div>
                     <label className="edit-label">Background Color:</label>
                     <CircleColorPicker handleColorChange = {this.handleBackgroundColorChange} color= {component.background_color ? component.background_color : defaultColor} id="background-color-input"/>
                 </div>
@@ -103,7 +119,7 @@ class EditControlBar extends Component {
                         type="number" id="border-thick-input" 
                         onChange={this.handleBorderWidthChange}
                         value = {component.border_width ? parseInt(component.border_width.substring(0, (component.border_width.length)-2)) : ""} 
-                        className="custom-input edit-field" min="1" max="99"/>
+                        className="custom-input edit-field" min="0" max="99"/>
                 </div>
                 <hr/>
                 <div>
@@ -112,7 +128,7 @@ class EditControlBar extends Component {
                         type="number" id="border-rad-input" 
                         onChange={this.handleBorderRadiusChange}
                         value = {component.border_radius ? parseInt(component.border_radius.substring(0, (component.border_radius.length)-2)) : ""} 
-                        className="custom-input edit-field" min="1" max="99"/>
+                        className="custom-input edit-field" min="0" max="99"/>
                 </div>
             </div>
         );

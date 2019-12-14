@@ -42,11 +42,29 @@ class EditScreen extends Component {
             "width": "100px",
             "height": "100px",
             "font_size": "12px",
-            "font_color": "black",
-            "border_color": "black",
-            "background_color": "transparent",
-            "border_radius": "2px",
-            "border_width": "1px",
+            "font_color": 
+                {
+                    "r": '0',
+                    "g": '0',
+                    "b": '0',
+                    "a": '1',
+                },
+            "border_color": 
+                {
+                    "r": '0',
+                    "g": '0',
+                    "b": '0',
+                    "a": '1',
+                },
+            "background_color":
+                {
+                    "r": '255',
+                    "g": '255',
+                    "b": '255',
+                    "a": '1',
+                },
+            "border_radius": "1px",
+            "border_width": "2px",
         }
         this.props.wireframe.components.push(newContainer);
         this.forceUpdate();
@@ -59,14 +77,32 @@ class EditScreen extends Component {
             "text": "Prompt for input",
             "x": 5,
             "y": 5,
-            "width": "85px",
-            "height": "30px",
+            "width": "145px",
+            "height": "25px",
             "font_size": "12px",
-            "font_color": "black",
-            "border_color": "blue",
-            "background_color": "gray",
-            "border_radius": "2px",
-            "border_width": "1px",
+           "font_color": 
+                {
+                    "r": '148',
+                    "g": '148',
+                    "b": '148',
+                    "a": '1',
+                },
+            "border_color": 
+                {
+                    "r": '0',
+                    "g": '0',
+                    "b": '0',
+                    "a": '1',
+                },
+            "background_color":
+                {
+                    "r": '255',
+                    "g": '255',
+                    "b": '255',
+                    "a": '0',
+                },
+            "border_radius": "1px",
+            "border_width": "0px",
         }
         this.props.wireframe.components.push(newLabel);
         this.forceUpdate();
@@ -76,16 +112,34 @@ class EditScreen extends Component {
         let newButton = {
             "key": this.props.wireframe.components.length,
             "type": "button",
-            "text": "",
+            "text": "Submit",
             "x": 5,
             "y": 5,
             "width": "85px",
             "height": "30px",
             "font_size": "12px",
-            "font_color": "black",
-            "border_color": "blue",
-            "background_color": "gray",
-            "border_radius": "2px",
+            "font_color": 
+                {
+                    "r": '0',
+                    "g": '0',
+                    "b": '0',
+                    "a": '1',
+                },
+            "border_color": 
+                {
+                    "r": '0',
+                    "g": '0',
+                    "b": '0',
+                    "a": '0.8',
+                },
+            "background_color":
+                {
+                    "r": '240',
+                    "g": '240',
+                    "b": '240',
+                    "a": '1',
+                }, 
+            "border_radius": "8px",
             "border_width": "1px",
         }
         this.props.wireframe.components.push(newButton);
@@ -102,10 +156,28 @@ class EditScreen extends Component {
             "width": "85",
             "height": "30px",
             "font_size": "12px",
-            "font_color": "black",
-            "border_color": "black",
-            "background_color": "white",
-            "border_radius": "2px",
+            "font_color": 
+                {
+                    "r": '200',
+                    "g": '200',
+                    "b": '200',
+                    "a": '1',
+                },
+            "border_color": 
+                {
+                    "r": '0',
+                    "g": '0',
+                    "b": '0',
+                    "a": '0.8',
+                },
+            "background_color":
+                {
+                    "r": '250',
+                    "g": '250',
+                    "b": '250',
+                    "a": '1',
+                }, 
+            "border_radius": "1px",
             "border_width": "1px",
         }
         this.props.wireframe.components.push(newInput);

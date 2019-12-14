@@ -34,9 +34,6 @@ class ResizableContainer extends Component {
     }
 
     render() {
-
-        console.log(this.props);
-
         const styleOnClick = {
             display: "flex",
             alignItems: "center",
@@ -46,9 +43,20 @@ class ResizableContainer extends Component {
             position: "absolute",
             cursor: "move",
             fontSize: this.props.component.font_size,
-            fontColor: this.props.component.font_color,
-            borderColor: this.props.component.border_color,
-            backgroundColor: this.props.component.background_color,
+            color: "rgba(" + this.props.component.font_color.r  + "," + 
+                                this.props.component.font_color.g  + "," + 
+                                this.props.component.font_color.b  + "," + 
+                                this.props.component.font_color.a  + ")",
+
+            borderColor: "rgba(" + this.props.component.border_color.r  + "," + 
+                                    this.props.component.border_color.g  + "," + 
+                                    this.props.component.border_color.b  + "," + 
+                                    this.props.component.border_color.a  + ")",
+
+            backgroundColor: "rgba(" + this.props.component.background_color.r  + "," + 
+                                    this.props.component.background_color.g  + "," + 
+                                    this.props.component.background_color.b  + "," + 
+                                    this.props.component.background_color.a  + ")",
             borderRadius: this.props.component.border_radius,
             borderWidth: this.props.component.border_width,
             borderStyle: "solid",
@@ -63,9 +71,20 @@ class ResizableContainer extends Component {
             position: "absolute",
             cursor: "pointer",
             fontSize: this.props.component.font_size,
-            fontColor: this.props.component.font_color,
-            borderColor: this.props.component.border_color,
-            backgroundColor: this.props.component.background_color,
+            color: "rgba(" + this.props.component.font_color.r  + "," + 
+                                this.props.component.font_color.g  + "," + 
+                                this.props.component.font_color.b  + "," + 
+                                this.props.component.font_color.a  + ")",
+
+            borderColor: "rgba(" + this.props.component.border_color.r  + "," + 
+                                    this.props.component.border_color.g  + "," + 
+                                    this.props.component.border_color.b  + "," + 
+                                    this.props.component.border_color.a  + ")",
+
+            backgroundColor: "rgba(" + this.props.component.background_color.r  + "," + 
+                                    this.props.component.background_color.g  + "," + 
+                                    this.props.component.background_color.b  + "," + 
+                                    this.props.component.background_color.a + ")",
             borderRadius: this.props.component.border_radius,
             borderWidth: this.props.component.border_width,
             borderStyle: "solid",

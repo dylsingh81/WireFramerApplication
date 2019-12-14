@@ -38,7 +38,7 @@ class CircleColorPicker extends React.Component {
           width: '20px',
           height: '20px',
           borderRadius: '10px',
-          background: this.props.color,
+          backgroundColor: "rgba(" + this.props.color.r  + "," + this.props.color.g  + "," +  this.props.color.b  + "," + this.props.color.a  + ")",
         },
         swatch: {
           padding: '0px',

@@ -82,12 +82,23 @@ class ResizableLabel extends Component {
             height: this.props.component.height,
             width: this.props.component.width,
             fontSize: this.props.component.font_size,
-            fontColor: this.props.component.font_color,
-            borderColor: this.props.component.border_color,
-            backgroundColor: this.props.component.background_color,
+            color: "rgba(" + this.props.component.font_color.r  + "," + 
+                                this.props.component.font_color.g  + "," + 
+                                this.props.component.font_color.b  + "," + 
+                                this.props.component.font_color.a  + ")",
+
+            borderColor: "rgba(" + this.props.component.border_color.r  + "," + 
+                                    this.props.component.border_color.g  + "," + 
+                                    this.props.component.border_color.b  + "," + 
+                                    this.props.component.border_color.a  + ")",
+
+            backgroundColor: "rgba(" + this.props.component.background_color.r  + "," + 
+                                    this.props.component.background_color.g  + "," + 
+                                    this.props.component.background_color.b  + "," + 
+                                    this.props.component.background_color.a  + ")",
             borderRadius: this.props.component.border_radius,
             borderWidth: this.props.component.border_width,
-            borderStyle: "none",
+            borderStyle: "solid",
             overflow: "hidden",   
         }
     
@@ -96,12 +107,23 @@ class ResizableLabel extends Component {
             height: this.props.component.height,
             width: this.props.component.width,
             fontSize: this.props.component.font_size,
-            fontColor: this.props.component.font_color,
-            borderColor: this.props.component.border_color,
-            backgroundColor: this.props.component.background_color,
+            color: "rgba(" + this.props.component.font_color.r  + "," + 
+                                this.props.component.font_color.g  + "," + 
+                                this.props.component.font_color.b  + "," + 
+                                this.props.component.font_color.a  + ")",
+
+            borderColor: "rgba(" + this.props.component.border_color.r  + "," + 
+                                    this.props.component.border_color.g  + "," + 
+                                    this.props.component.border_color.b  + "," + 
+                                    this.props.component.border_color.a  + ")",
+
+            backgroundColor: "rgba(" + this.props.component.background_color.r  + "," + 
+                                    this.props.component.background_color.g  + "," + 
+                                    this.props.component.background_color.b  + "," + 
+                                    this.props.component.background_color.a  + ")",
             borderRadius: this.props.component.border_radius,
             borderWidth: this.props.component.border_width,
-            borderStyle: "none",
+            borderStyle: "solid",
             overflow: "hidden",   
 
         }
@@ -136,7 +158,7 @@ class ResizableLabel extends Component {
 
 
             >
-            <label className ="sandbox-label" style={this.props.clickedId == this.props.id ? textOnCursorStyle : textOffCursorStyle}>
+            <label className ="noselect sandbox-label" style={this.props.clickedId == this.props.id ? textOnCursorStyle : textOffCursorStyle}>
                 {this.props.component.text}
             </label>
                 <div className='resizers' style = {resizers/* Taken fromhttps://medium.com/the-z/making-a-resizable-div-in-js-is-not-easy-as-you-think-bda19a1bc53d*/}>

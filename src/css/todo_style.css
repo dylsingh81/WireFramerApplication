@@ -193,8 +193,8 @@ div.banner {
   color: black;
   font-size: 13px;
   display: inline-block;
-  margin-top: 18px;
-  margin-bottom: 18px;
+  margin-top: 9px;
+  margin-bottom: 9px;
 }
 .color-picker{
   display: inline-block !important;
@@ -221,6 +221,10 @@ div.banner {
   margin-left: 25px;
 }
 
+#font-color-input{
+  margin-left: 64px;
+}
+
 input.edit-field{
   font-size: 100% !important;
   background: whitesmoke !important;
@@ -243,7 +247,7 @@ input.edit-field:focus {
 input.sandbox-control{
   line-height: 1.15 !important;
   margin-top: 8px !important;
-  text-align: center;
+  text-align: left;
 }
 
 .sandbox-button{
@@ -253,4 +257,14 @@ input.sandbox-control{
 .sandbox-button:active {
   box-shadow: 0 1px #666;
   transform: translateY(0px);
+}
+
+.noselect {
+  -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+     -khtml-user-select: none; /* Konqueror HTML */
+       -moz-user-select: none; /* Old versions of Firefox */
+        -ms-user-select: none; /* Internet Explorer/Edge */
+            user-select: none; /* Non-prefixed version, currently
+                                  supported by Chrome, Opera and Firefox */
 }
