@@ -49,10 +49,11 @@ class EditScreenSandbox extends Component {
         const updateComponent = this.props.updateComponent
         const wireframe = this.props.wireframe;
         const currentZoom = this.props.currentZoom;
+        const update = this.props.update;
 
         if(currentZoom != this.state.prevZoom){
             this.setState({prevZoom: currentZoom});
-            this.props.update();
+            //this.props.updateZoom();
         }
 
         console.log(wireframe);
@@ -94,6 +95,7 @@ class EditScreenSandbox extends Component {
                             key={i}
                             updateComponent = {updateComponent}
                             currentZoom = {currentZoom}
+                            update = {update}
                         />
                         )
                         }

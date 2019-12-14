@@ -16,7 +16,7 @@ class EditScreen extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            saved: false,
+            needsSave: false,
             currentWF: null,
             clickedId: -2,
             isComponent: false,
@@ -268,7 +268,9 @@ class EditScreen extends Component {
     }
 
     update = (e) => {
+        console.log("HERE");
         this.forceUpdate();
+        this.setState({ needsSave: true, })
     }
 
    
@@ -312,7 +314,7 @@ class EditScreen extends Component {
             return <Redirect to="/login" />;
         }
 
-        console.log(this.state);
+        console.log(this.state.needsSave);
 
         return (
             <div className="edit-screen">

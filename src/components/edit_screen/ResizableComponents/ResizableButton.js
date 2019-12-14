@@ -17,6 +17,16 @@ class ResizableButton extends Component {
             ...position,
         });
         let component = this.props.component;
+
+        if(component.x != position.x && component.y != position.y)
+        {
+            this.props.update();
+        }
+        if(component.width != this.state.width && component.height != this.state.height)
+        {
+            this.props.update();
+        }
+
         component.x = position.x;
         component.y = position.y;
         component.height = this.state.height;
@@ -27,6 +37,10 @@ class ResizableButton extends Component {
     onMove = (e, d) => {
         this.setState({ x: d.x, y: d.y })
         let component = this.props.component;
+        if(component.x != d.x && component.y != d.y)
+        {
+            this.props.update();
+        }
         component.x = d.x;
         component.y = d.y;
         this.props.updateComponent(component, this.props.id);

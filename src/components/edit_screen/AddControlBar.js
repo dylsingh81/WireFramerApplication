@@ -20,7 +20,7 @@ class AddControlBar extends Component {
                 <div>
                     <button onClick={this.props.saveWF} className="waves-effect waves-light btn-small red lighten-2">Save</button>
                     <div className="h1-divider" />
-                    <button className="waves-effect waves-light btn-small red lighten-2">Cancel</button>
+                    <button className="waves-effect waves-light btn-small red lighten-2">Close</button>
                 </div>
                 <hr />
                 <div id="controls">

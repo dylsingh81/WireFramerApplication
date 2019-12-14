@@ -23,17 +23,23 @@ class HomeScreen extends Component {
         const user = this.props.user;
         console.log(user);
         var newWF = {
-            key: user.wireFrames.length,
+            key: user.wireFrames.length-1,
 			name: "Unknown",
-		    width: "1000px",
-			height: "1000px",
-            containers: [],
+		    width: 500,
+            height: 600,
+            background_color: {
+                "r": "245",
+                "g": "245",
+                "b": "245",
+                "a": "1"
+            },
+            components: [],
             time: new Date(), 
         };
-
+        
         user.wireFrames.push(newWF);
-
-        this.setState({redirect: true, redirectID: user.wireFrames.length});
+        console.log(user.wireFrames);
+        this.setState({redirect: true, redirectID: user.wireFrames.length-1});
 
         const fireStore = getFirestore();
         var onlineUser =  fireStore.collection('users').doc(this.props.auth.uid);

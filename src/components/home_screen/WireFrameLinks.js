@@ -5,10 +5,20 @@ import { compose } from 'redux';
 
 import { firestoreConnect } from 'react-redux-firebase';
 
-import { editListHandler, removeListHandler } from '../../store/database/asynchHandler'
+import { editWireframeHandler } from '../../store/database/asynchHandler';
 import WireFrameCard from './WireFrameCard';
 
 class WireframeLinks extends React.Component {
+    
+    updateTime = (wireframe, i, e) =>{
+        const user = this.props.user;
+        const wireFrames = user.wireFrames;
+        console.log("Clicked on", wireFrames[wireframe.key]);
+        wireFrames[i].time = new Date();
+        this.props.updateWF(this.props.user);
+
+    }
+
     render() {
 
         const user = this.props.user;
@@ -27,17 +37,15 @@ class WireframeLinks extends React.Component {
         console.log(wireFrames);
         return (
             <div className="red">
-                {wireFrames && wireFrames.map(wireFrame => (
-                    <Link to={'/wireframe/' + wireFrame.key} key={wireFrame.key} onClick={this.updateTime.bind(this, wireFrames)}>
+                
+                {wireFrames && wireFrames.map((wireFrame, i) => (
+                    <Link to={'/wireframe/' + i} key={i} onClick={this.updateTime.bind(this, wireFrame, i)}>
                         <WireFrameCard wireFrame={wireFrame} />
                     </Link>
                 ))}
             </div>
         );
 
-    }
-    updateTime() {
-        return;
     }
 }
 
@@ -60,8 +68,14 @@ const mapStateToProps = (state, ownProps) => {
 };
 
 
+
+const mapDispatchToProps = dispatch => ({
+    updateWF: user => dispatch(editWireframeHandler(user)),
+});
+
+
 export default compose(
-    connect(mapStateToProps),
+    connect(mapStateToProps, mapDispatchToProps),
     firestoreConnect([
         { collection: 'users' },
     ]),
