@@ -33,6 +33,8 @@ div.banner {
 
 .home_new_list_button {
   font-size: 32pt;
+  height: 100%;
+  margin-left: 26px;
 }
 .home_new_list_button:hover {
   box-shadow: 1px 2px;
@@ -267,4 +269,22 @@ input.sandbox-control{
         -ms-user-select: none; /* Internet Explorer/Edge */
             user-select: none; /* Non-prefixed version, currently
                                   supported by Chrome, Opera and Firefox */
+}
+
+.modal-footer-buttons{
+  margin-right: 30px !important;
+}
+
+#modal-title{
+  text-align: center;
+  color: whitesmoke;
+}
+
+#modal1{
+  border: solid;
+  border-width: 5px;
+  border-color: rgb(230, 61, 61);
+}
+.save-close-btn{
+  font-weight: normal !important;
 }

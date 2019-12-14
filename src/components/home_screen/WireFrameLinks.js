@@ -34,13 +34,12 @@ class WireframeLinks extends React.Component {
             wireFrames.sort((a ,b) => (a.time < b.time) ? 1:-1);
         }
 
-        console.log(wireFrames);
         return (
-            <div className="red">
+            <div>
                 
                 {wireFrames && wireFrames.map((wireFrame, i) => (
                     <Link to={'/wireframe/' + i} key={i} onClick={this.updateTime.bind(this, wireFrame, i)}>
-                        <WireFrameCard wireFrame={wireFrame} />
+                        <WireFrameCard index={i} user = {this.props.user} wireFrame={wireFrame} />
                     </Link>
                 ))}
             </div>

@@ -5,6 +5,9 @@ import { NavLink, Redirect } from 'react-router-dom';
 import { firestoreConnect } from 'react-redux-firebase';
 import WireFrameLinks from './WireFrameLinks'
 import { getFirestore } from 'redux-firestore';
+import DeleteWFModal from './DeleteWFModal';
+import { editWireframeHandler } from '../../store/database/asynchHandler';
+
 
 class HomeScreen extends Component {
 
@@ -48,6 +51,12 @@ class HomeScreen extends Component {
             })
     }
 
+    deleteList = (e) =>{
+        
+        this.props.user.wireFrames.splice(this.props.index, 1);
+        this.props.updateWF(this.props.user);
+    }
+
     render() {
         if (!this.props.auth.uid) {
             return <Redirect to="/login" />;
@@ -73,11 +82,12 @@ class HomeScreen extends Component {
                         
                         <div className="home_new_list_container">
                             <br></br>
-                                <button className="home_new_list_button" onClick={this.handleNewList}>
+                                <button className="waves-effect waves-light btn  indigo lighten-1 home_new_list_button" onClick={this.handleNewList}>
                                     Create a New Wireframe
                                 </button>
                         </div>
                     </div>
+                    <DeleteWFModal deleteList = {this.deleteList}/>
                 </div>
             </div>
         );
@@ -92,8 +102,6 @@ const mapStateToProps = (state) => {
     if (user)
         user.id = state.firebase.auth.uid;
 
-    console.log(users);
-
     return {
         user,
         auth: state.firebase.auth,
@@ -101,9 +109,13 @@ const mapStateToProps = (state) => {
     };
 };
 
+const mapDispatchToProps = dispatch => ({
+    updateWF: user => dispatch(editWireframeHandler(user)),
+});
+
 export default compose(
-    connect(mapStateToProps),
+    connect(mapStateToProps, mapDispatchToProps),
     firestoreConnect([
-      { collection: 'users' },
+        { collection: 'users' },
     ]),
 )(HomeScreen);

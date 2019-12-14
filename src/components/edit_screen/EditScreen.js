@@ -4,12 +4,14 @@ import { connect } from 'react-redux';
 import { compose } from 'redux';
 import { NavLink, Redirect } from 'react-router-dom';
 import { firestoreConnect } from 'react-redux-firebase';
-import { getFirestore } from 'redux-firestore';
+import CloseWFModal from './CloseWFModal';
 import EditScreenHeader from './EditScreenHeader'
 import EditScreenSandbox from './EditScreenSandbox'
 import AddControlBar from './AddControlBar'
 import EditControlBar from './EditControlBar'
 import { editWireframeHandler } from '../../store/database/asynchHandler';
+import M  from 'materialize-css';
+
 
 class EditScreen extends Component {
 
@@ -30,6 +32,7 @@ class EditScreen extends Component {
 
     saveWF = (e) => {
         this.props.updateWF(this.props.user);
+        this.setState({ needsSave: false, })
     }
 
     addContainer = (e) => {
@@ -67,7 +70,7 @@ class EditScreen extends Component {
             "border_width": "2px",
         }
         this.props.wireframe.components.push(newContainer);
-        this.forceUpdate();
+        this.update();
     }
 
     addLabel = (e) => {
@@ -105,7 +108,7 @@ class EditScreen extends Component {
             "border_width": "0px",
         }
         this.props.wireframe.components.push(newLabel);
-        this.forceUpdate();
+        this.update();
     }
 
     addButton = (e) => {
@@ -143,7 +146,7 @@ class EditScreen extends Component {
             "border_width": "1px",
         }
         this.props.wireframe.components.push(newButton);
-        this.forceUpdate();
+        this.update();
     }
 
     addInput = (e) => {
@@ -181,7 +184,7 @@ class EditScreen extends Component {
             "border_width": "1px",
         }
         this.props.wireframe.components.push(newInput);
-        this.forceUpdate();
+        this.update();
     }
 
     updateClickedId = (clickedId, e) => {
@@ -216,7 +219,7 @@ class EditScreen extends Component {
             })
             this.props.wireframe.components.splice(index, 1);
             console.log(this.props.wireframe.components)
-            this.forceUpdate();
+            this.update();
         }
         else if (e.keyCode === 68 && e.ctrlKey) {
             e.preventDefault();
@@ -246,7 +249,7 @@ class EditScreen extends Component {
             returnedTarget.key = this.props.wireframe.components.length;
             this.props.wireframe.components.push(returnedTarget);
 
-            this.forceUpdate();
+            this.update();
         }
         else {
             return;
@@ -305,7 +308,14 @@ class EditScreen extends Component {
             default:
                 break;
         }
-        this.forceUpdate();
+        this.update();
+    }
+
+    openCloseWFModal = (e)=>
+    {
+        var elems = document.querySelectorAll('#modal1');
+        var instances = M.Modal.init(elems, null);
+        M.Modal.getInstance(elems[0]).open();
     }
 
 
@@ -330,7 +340,11 @@ class EditScreen extends Component {
                             addInput={this.addInput}
                             saveWF={this.saveWF} 
                             zoomIn = {this.zoomIn}
-                            zoomOut = {this.zoomOut}/>
+                            zoomOut = {this.zoomOut}
+                            openCloseWFModal={this.openCloseWFModal}
+                            frameId = {this.props.frameId}
+                            needsSave = {this.state.needsSave}
+                            />
 
                     </div>
                     <div className="col no-padding">
@@ -346,6 +360,7 @@ class EditScreen extends Component {
                             clickedComponent={this.getClickedComponent(this.state.clickedId)} 
                             isComponent={this.state.isComponent} />
                     </div>
+                    <CloseWFModal/>
                 </div>
             </div>
         );
@@ -372,6 +387,7 @@ const mapStateToProps = (state, ownProps) => {
         auth: state.firebase.auth,
         firebase: state.firebase,
         wireframe,
+        frameId,
     };
 };
 

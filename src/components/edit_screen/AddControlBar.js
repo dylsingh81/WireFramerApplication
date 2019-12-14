@@ -2,9 +2,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
-import { NavLink, Redirect } from 'react-router-dom';
 import { firestoreConnect } from 'react-redux-firebase';
-import { getFirestore } from 'redux-firestore';
+import { Link } from 'react-router-dom';
 
 class AddControlBar extends Component {
     render() {
@@ -12,15 +11,17 @@ class AddControlBar extends Component {
         return (
             <div className="menu" id="add-ctrl">
                 <div>
-                    <button onClick={this.props.zoomIn} className="material-icons waves-effect waves-light btn-small yellow darken-1">zoom_in</button>
+                    <button onClick={this.props.zoomIn} className="sandbox-button material-icons btn-small yellow darken-1">zoom_in</button>
                     <div className="h1-divider" />
-                    <button onClick={this.props.zoomOut} className="material-icons waves-effect waves-light btn-small yellow darken-1">zoom_out</button>
+                    <button onClick={this.props.zoomOut} className="sandbox-button material-icons btn-small yellow darken-1">zoom_out</button>
                 </div>
                 <hr />
                 <div>
-                    <button onClick={this.props.saveWF} className="waves-effect waves-light btn-small red lighten-2">Save</button>
+                    <button onClick={this.props.saveWF} className="sandbox-button save-close-btn btn-small red lighten-2">Save</button>
                     <div className="h1-divider" />
-                    <button className="waves-effect waves-light btn-small red lighten-2">Close</button>
+                    <Link to={!this.props.needsSave ? "/" : "././" + this.props.frameId}
+                        onClick={this.props.openCloseWFModal} className="sandbox-button save-close-btn btn-small red lighten-2">Close
+                    </Link>
                 </div>
                 <hr />
                 <div id="controls">

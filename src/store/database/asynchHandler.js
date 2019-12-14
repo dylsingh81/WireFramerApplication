@@ -46,13 +46,3 @@ export const editWireframeHandler = (user) => (dispatch, getState, { getFirestor
     wireFrames: user.wireFrames,
   })
 };
-
-
-export const removeListHandler = (todoList) => (dispatch, getState, { getFirestore }) => {
-  const firestore = getFirestore();
-
-  firestore.collection("todoLists").doc(todoList.id).delete()
-    .then(() => {
-      dispatch(actionCreators.removeTodoList);
-    });
-};
