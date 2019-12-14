@@ -87,13 +87,21 @@ div.banner {
 }
 
 .sandbox{
-  background: white;
-  overflow: auto;
-  height: 1000px;
-  width: 900px;
   margin: 20px;
   display: inline-block;
-  zoom: 1;
+  transform-origin: 0 0 !important;
+  -moz-transform-origin: 0 0 !important;
+}
+
+.zoomable{
+  overflow: auto;
+  height: 100%;
+  height: 82vh;
+  width: 46vw;
+  background: gray;
+  
+  transform-origin: 0 0 !important;
+  -moz-transform-origin: 0 0 !important;  
 }
 
 .menu {

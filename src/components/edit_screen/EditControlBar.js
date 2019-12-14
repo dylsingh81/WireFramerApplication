@@ -24,6 +24,37 @@ class EditControlBar extends Component {
         this.props.update();
     }
 
+    handleTextChange = (e) =>
+    {
+        const { target } = e;
+        this.props.clickedComponent.text = target.value;
+        this.props.update();
+        this.forceUpdate();
+    }
+
+    handleFontSizeChange = (e) =>
+    {
+        const { target } = e;
+        this.props.clickedComponent.font_size = target.value + "px";
+        this.props.update();
+        this.forceUpdate();
+    }
+
+    handleBorderWidthChange = (e) =>
+    {
+        const { target } = e;
+        this.props.clickedComponent.border_width = target.value + "px";
+        this.props.update();
+        this.forceUpdate();
+    }
+    handleBorderRadiusChange = (e) =>
+    {
+        const { target } = e;
+        this.props.clickedComponent.border_radius = target.value + "px";
+        this.props.update();
+        this.forceUpdate();
+    }
+   
     render() {
         const component = this.props.clickedComponent;
         
@@ -39,7 +70,11 @@ class EditControlBar extends Component {
                 <div className="properties-label">
                     <label htmlFor="properties" className="active edit-label">Properties</label>
                     <hr/>
-                    <input value= {this.props.isComponent ? component.text: ""} className="active bold-text edit-field" type="text" name="properties" />
+                    <input                         
+                        disabled = {!this.props.isComponent} 
+                        onChange={this.handleTextChange} 
+                        value= {this.props.isComponent ? this.props.clickedComponent.text: ""} 
+                        className="active bold-text edit-field" type="text" name="properties" />
                 </div>
                 <hr/>
                 <div>
@@ -47,6 +82,7 @@ class EditControlBar extends Component {
                     <input 
                         value = {this.props.isComponent ? parseInt(component.font_size.substring(0, (component.font_size.length)-2)) : ""} 
                         disabled = {!this.props.isComponent}
+                        onChange={this.handleFontSizeChange}
                         type="number" id="font-size-input" 
                         className="custom-input edit-field" min="1" max="99"/>
                 </div>
@@ -65,6 +101,7 @@ class EditControlBar extends Component {
                     <label className="edit-label">Border Thickness:</label>
                     <input 
                         type="number" id="border-thick-input" 
+                        onChange={this.handleBorderWidthChange}
                         value = {component.border_width ? parseInt(component.border_width.substring(0, (component.border_width.length)-2)) : ""} 
                         className="custom-input edit-field" min="1" max="99"/>
                 </div>
@@ -73,6 +110,7 @@ class EditControlBar extends Component {
                     <label className="edit-label">Border Radius:</label>
                     <input 
                         type="number" id="border-rad-input" 
+                        onChange={this.handleBorderRadiusChange}
                         value = {component.border_radius ? parseInt(component.border_radius.substring(0, (component.border_radius.length)-2)) : ""} 
                         className="custom-input edit-field" min="1" max="99"/>
                 </div>

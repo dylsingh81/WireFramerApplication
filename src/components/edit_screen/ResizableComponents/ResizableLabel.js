@@ -132,12 +132,14 @@ class ResizableLabel extends Component {
                 onResize={this.onResize}
                 minHeight = {this.props.component.fontSize}
                 minWidth = {this.props.component.fontSize}
+                scale = {this.props.currentZoom}
+
 
             >
             <label className ="sandbox-label" style={this.props.clickedId == this.props.id ? textOnCursorStyle : textOffCursorStyle}>
                 {this.props.component.text}
             </label>
-                <div className='resizers' style = {resizers}>
+                <div className='resizers' style = {resizers/* Taken fromhttps://medium.com/the-z/making-a-resizable-div-in-js-is-not-easy-as-you-think-bda19a1bc53d*/}>
                     <div className='resizer top-left'></div>
                     <div className='resizer top-right'></div>
                     <div className='resizer bottom-left'></div>

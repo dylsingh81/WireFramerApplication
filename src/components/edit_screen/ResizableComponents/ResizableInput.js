@@ -128,12 +128,13 @@ class ResizableLabel extends Component {
                 size={{ width: this.props.component.width, height: this.props.component.height }}
 
                 position={{ x: this.props.component.x, y: this.props.component.y }}
+                scale = {this.props.currentZoom}
                 
                 onDragStop={this.onMove}
                 onResize={this.onResize}
             >
-                <input readOnly value={this.props.component.text} style={this.props.clickedId == this.props.id ? textOnCursorStyle : textOffCursorStyle} className = "sandbox-control" />
-                    <div className='resizers' style = {resizers}>
+                <input value={this.props.component.text} style={this.props.clickedId == this.props.id ? textOnCursorStyle : textOffCursorStyle} className = "sandbox-control" />
+                    <div className='resizers' style = {resizers/* Taken fromhttps://medium.com/the-z/making-a-resizable-div-in-js-is-not-easy-as-you-think-bda19a1bc53d*/}>
                         <div className='resizer top-left'></div>
                         <div className='resizer top-right'></div>
                         <div className='resizer bottom-left'></div>

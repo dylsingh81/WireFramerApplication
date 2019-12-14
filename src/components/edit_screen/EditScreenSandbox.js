@@ -10,7 +10,12 @@ import ResizableComponent from './ResizableComponents/ResizableComponent'
 
 class EditScreenSandbox extends Component {
 
-    
+    constructor(props) {
+        super(props);
+        this.state = {
+            prevZoom: 1,
+        }
+    }
 
     handleNoneSelected = (e) =>
     {
@@ -35,33 +40,55 @@ class EditScreenSandbox extends Component {
         e.stopPropagation();
     }
 
+
     //CHANGE CONTAINER TO OBJECT, THEN IN OBJECT USE TYPE TO RETURN() based on IF, of what you want. * return(<ResizeabkeLabel/>)
     render() {
         const components = this.props.wireframe.components;
         const handleNodeSelected = this.handleNodeSelected;
         const clickedId = this.props.clickedId;
         const updateComponent = this.props.updateComponent
-        console.log(this.props);
+        const wireframe = this.props.wireframe;
+        const currentZoom = this.props.currentZoom;
+
+        if(currentZoom != this.state.prevZoom){
+            this.setState({prevZoom: currentZoom});
+            this.props.update();
+        }
+
+        console.log(wireframe);
+        const sandboxStyle = {
+            backgroundColor: wireframe.background_color,
+            height: wireframe.height + "px",
+            width: wireframe.width + "px",
+            transform: "scale( "+ this.props.currentZoom + ")",
+        };
+
+        const zoomStyle = {
+            transform: "scale( "+ this.props.currentZoom + ")",
+        };
+
         return (
-            <div className="sandbox-container" onClick={this.handleNoneSelected}>
-                <div className="sandbox" onClick = {this.handleSandboxSelected}>
-                {components && components.map(function(component, i) {
-                    return(
-                        <ResizableComponent 
-                        onDrag = {handleNodeSelected} 
-                        component={component} 
-                        type={component.type} 
-                        clickedId={clickedId} 
-                        onClick = {handleNodeSelected}
-                        id={i} 
-                        key={i}
-                        updateComponent = {updateComponent}
-                    />
-                    )
-                    }
-                )}
-                </div>
+            <div className= "zoomable">
+                    <div style={sandboxStyle} className="sandbox" onClick = {this.handleSandboxSelected}>
+                    {components && components.map(function(component, i) {
+                        return(
+                            <ResizableComponent 
+                            onDrag = {handleNodeSelected} 
+                            component={component} 
+                            type={component.type} 
+                            clickedId={clickedId} 
+                            onClick = {handleNodeSelected}
+                            id={i} 
+                            key={i}
+                            updateComponent = {updateComponent}
+                            currentZoom = {currentZoom}
+                        />
+                        )
+                        }
+                    )}
+                    </div>
             </div>
+            
         );
 
     }

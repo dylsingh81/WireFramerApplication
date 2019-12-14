@@ -14,9 +14,6 @@ import ResizableButton from './ResizableButton';
 
 class ResizableComponent extends Component {
 
-    constructor() {
-        super()
-    }
 
     render() {
 
@@ -27,21 +24,22 @@ class ResizableComponent extends Component {
         const id= this.props.id;
         const component = this.props.component;
         const updateComponent = this.props.updateComponent
+        const currentZoom = this.props.currentZoom;
         switch(type){
             case "container":
-                return(<ResizableContainer updateComponent = {updateComponent} component={component} onDrag = {onDrag} clickedId={clickedId} onClick = {onClick} id={id}/>);
+                return(<ResizableContainer currentZoom = {currentZoom} updateComponent = {updateComponent} component={component} onDrag = {onDrag} clickedId={clickedId} onClick = {onClick} id={id}/>);
                 break;
             case "label":
-                return(<ResizableLabel updateComponent = {updateComponent} component={component} onDrag = {onDrag} clickedId={clickedId} onClick = {onClick} id={id}/>);
+                return(<ResizableLabel currentZoom = {currentZoom} updateComponent = {updateComponent} component={component} onDrag = {onDrag} clickedId={clickedId} onClick = {onClick} id={id}/>);
                 break;
             case "input":
-                return(<ResizableInput updateComponent = {updateComponent} component={component} onDrag = {onDrag} clickedId={clickedId} onClick = {onClick} id={id}/>);
+                return(<ResizableInput currentZoom = {currentZoom} updateComponent = {updateComponent} component={component} onDrag = {onDrag} clickedId={clickedId} onClick = {onClick} id={id}/>);
                 break;
             case "button":
-                return(<ResizableButton updateComponent = {updateComponent} component={component} onDrag = {onDrag} clickedId={clickedId} onClick = {onClick} id={id}/>);
+                return(<ResizableButton currentZoom = {currentZoom} updateComponent = {updateComponent} component={component} onDrag = {onDrag} clickedId={clickedId} onClick = {onClick} id={id}/>);
                 break;
             default:
-                return(<ResizableContainer updateComponent = {updateComponent} component={component} onDrag = {onDrag} clickedId={clickedId} onClick = {onClick} id={id}/>);
+                return(<ResizableContainer currentZoom = {currentZoom} updateComponent = {updateComponent} component={component} onDrag = {onDrag} clickedId={clickedId} onClick = {onClick} id={id}/>);
     }
 }
 

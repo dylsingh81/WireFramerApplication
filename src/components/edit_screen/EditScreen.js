@@ -20,11 +20,11 @@ class EditScreen extends Component {
             currentWF: null,
             clickedId: -2,
             isComponent: false,
+            currentZoom: 1,
         }
     }
 
     updateComponent = (component, id) => {
-        console.log("Update component: ");
         this.props.wireframe.components[id] = component;
     }
 
@@ -158,7 +158,7 @@ class EditScreen extends Component {
                 "type": "",
                 "text": "",
                 "x": 0,
-                "y": 0,	
+                "y": 0,
                 "width": "",
                 "height": "",
                 "font_size": "",
@@ -173,8 +173,6 @@ class EditScreen extends Component {
             returnedTarget.y += 100;
             returnedTarget.key = this.props.wireframe.components.length;
             this.props.wireframe.components.push(returnedTarget);
-            //console.log(returnedTarget);
-            console.log(this.props.wireframe.components)
 
             this.forceUpdate();
         }
@@ -201,6 +199,42 @@ class EditScreen extends Component {
         this.forceUpdate();
     }
 
+   
+
+
+    zoomIn=()=>{
+        const nextZoom = this.state.currentZoom * 2;
+        this.setState({ currentZoom: nextZoom, })
+        this.forceUpdate();
+    }
+
+    zoomOut=()=>{
+        const nextZoom = this.state.currentZoom * 0.5;
+        this.setState({ currentZoom: nextZoom, })
+        this.forceUpdate();
+    }
+
+    handleChange = (e) => {
+        const { target } = e;
+        console.log(target.value);
+
+        switch (target.id) {
+            case "name":
+                this.props.wireframe.name = target.value
+                break;
+            case "width":
+                this.props.wireframe.width = target.value
+                break;
+            case "height":
+                this.props.wireframe.height = target.value
+                break;
+            default:
+                break;
+        }
+        this.forceUpdate();
+    }
+
+
     render() {
         if (!this.props.auth.uid) {
             return <Redirect to="/login" />;
@@ -211,7 +245,7 @@ class EditScreen extends Component {
         return (
             <div className="edit-screen">
                 <div>
-                    <EditScreenHeader />
+                    <EditScreenHeader handleChange={this.handleChange} wireframe={this.props.wireframe} />
                 </div>
                 <div className="row">
                     <div className="col no-padding">
@@ -220,14 +254,23 @@ class EditScreen extends Component {
                             addLabel={this.addLabel}
                             addButton={this.addButton}
                             addInput={this.addInput}
-                            saveWF={this.saveWF} />
+                            saveWF={this.saveWF} 
+                            zoomIn = {this.zoomIn}
+                            zoomOut = {this.zoomOut}/>
 
                     </div>
                     <div className="col no-padding">
-                        <EditScreenSandbox updateClickedId={this.updateClickedId} clickedId={this.state.clickedId} updateComponent={this.updateComponent} wireframe={this.props.wireframe} />
+                        <EditScreenSandbox 
+                            updateClickedId={this.updateClickedId} clickedId={this.state.clickedId} 
+                            updateComponent={this.updateComponent} wireframe={this.props.wireframe}
+                            currentZoom = {this.state.currentZoom} update={this.update}/>
                     </div>
                     <div className="col no-padding">
-                        <EditControlBar update={this.update} clickedComponent={this.getClickedComponent(this.state.clickedId)} isComponent={this.state.isComponent} />
+                        <EditControlBar 
+                            handleTextChange = {this.handleTextChange}
+                            update={this.update} 
+                            clickedComponent={this.getClickedComponent(this.state.clickedId)} 
+                            isComponent={this.state.isComponent} />
                     </div>
                 </div>
             </div>

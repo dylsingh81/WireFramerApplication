@@ -8,69 +8,25 @@ import { getFirestore } from 'redux-firestore';
 
 class EditScreenHeader extends Component {
     render() {
-
+        const wireframe = this.props.wireframe;
         return (
             <div className="row no-margin-bottom">
                 <div className="input-field bold-text col s6">
                     <label htmlFor="name" className="active">Name</label>
-                    <input className="active bold-text" type="text" name="name" onChange={this.handleChange} />
+                    <input value = {wireframe.name} className="active bold-text" type="text" name="name" id="name" onChange={this.props.handleChange} />
                 </div>
                 <div className="input-field bold-text col s3">
-                    <label htmlFor="width" className="active">Width</label>
-                    <input className="active bold-text" type="number" name="width" onChange={this.handleChange} />
+                    <label htmlFor="width" className="active">Width (px)</label>
+                    <input value = {wireframe.width} className="active bold-text" type="number" name="width" id="width" onChange={this.props.handleChange} />
                 </div>
                 <div className="input-field bold-text col s3">
-                    <label htmlFor="height" className="active">Height</label>
-                    <input className="active bold-text" type="number" name="height" onChange={this.handleChange} />
+                    <label htmlFor="height" className="active">Height (px)</label>
+                    <input value = {wireframe.height} className="active bold-text" type="number" name="height" id="height"onChange={this.props.handleChange} />
                 </div>
             </div>
         );
     }
-
-    handleChange = (e) => {
-        const { target } = e;
-
-        this.setState(state => ({
-            ...state,
-            [target.id]: target.value,
-        }));
-
-        /*  switch(target.id){
-                 case "name":
-                         this.props.todoList.name = target.value
-                     break;
-                 case "owner":
-                         this.props.todoList.owner = target.value
-                     break;                   
-                 default: 
-                     break;
-             }
-             
-             //Updates firebase database.
-             this.props.updateList(this.props.todoList); */
-    }
-
 }
 
-const mapStateToProps = (state) => {
-    const { users } = state.firestore.data;
-    const user = users ? users[state.firebase.auth.uid] : null;
-    //todoList.id = id;
-
-    if (user)
-        user.id = state.firebase.auth.uid;
-
-    return {
-        user,
-        auth: state.firebase.auth,
-        firebase: state.firebase
-    };
-};
-
-export default compose(
-    connect(mapStateToProps),
-    firestoreConnect([
-        { collection: 'users' },
-    ]),
-)(EditScreenHeader);
+export default EditScreenHeader;
 

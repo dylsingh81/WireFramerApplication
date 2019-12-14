@@ -114,12 +114,12 @@ class ResizableContainer extends Component {
                 size={{ width: this.props.component.width, height: this.props.component.height }}
 
                 position={{ x: this.props.component.x, y: this.props.component.y }}
-                
+                scale = {this.props.currentZoom}
                 onDragStop={this.onMove}
                 onResize={this.onResize}
 
             >
-                <div className='resizers'>
+                <div className='resizers'/* Taken fromhttps://medium.com/the-z/making-a-resizable-div-in-js-is-not-easy-as-you-think-bda19a1bc53d*/>
                     <div className='resizer top-left'></div>
                     <div className='resizer top-right'></div>
                     <div className='resizer bottom-left'></div>
