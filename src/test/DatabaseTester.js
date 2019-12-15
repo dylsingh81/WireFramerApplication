@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import testJson from './TestWireFrameData.json'
 import { getFirestore } from 'redux-firestore';
 import { Redirect } from 'react-router-dom'
-
+import { NavLink } from 'react-router-dom';
 import { firestoreConnect } from 'react-redux-firebase';
 import { compose } from 'redux';
 
@@ -63,8 +63,9 @@ class DatabaseTester extends React.Component {
         if(user.admin){
             return (
                 <div>
-                    <button onClick={this.handleClear}>Clear Database</button>
-                    <button onClick={this.handleReset}>Reset Database</button>
+                    <button className="database-button btn-small red darken-1" onClick={this.handleClear}>Clear Database</button>
+                    <button className="database-button btn-small blue darken-1" onClick={this.handleReset}>Reset Database</button>
+                    <NavLink to="/login"><button className="database-button btn-small yellow darken-3">Go Back To HomeScreen</button></NavLink>
                 </div>)
         }
         return(
