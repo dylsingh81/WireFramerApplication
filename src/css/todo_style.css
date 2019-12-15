@@ -254,6 +254,7 @@ input.sandbox-control{
 
 .sandbox-button{
   box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+  font-weight: normal;
 }
 
 .sandbox-button:active {
@@ -285,6 +286,13 @@ input.sandbox-control{
   border-width: 5px;
   border-color: rgb(230, 61, 61);
 }
-.save-close-btn{
-  font-weight: normal !important;
+
+.database-button{
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+  margin-right: 20px;
+}
+
+.database-button:active {
+  box-shadow: 0 1px #666;
+  transform: translateY(0px);
 }
