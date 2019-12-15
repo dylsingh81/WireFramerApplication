@@ -21,23 +21,18 @@ class DatabaseTester extends React.Component {
     // TO LOG IN
     handleClear = () => {
         const fireStore = getFirestore();
-        for(var i = 0; i < this.state.defaultUsers.length; i++){
-            var user =  fireStore.collection('users').doc(this.state.defaultUsers[i]);
-            user.update({
+        var user =  fireStore.collection('users').doc(this.props.auth.uid);
+        user.update({
                 wireFrames: []
-            })
-        };
-        this.state.defaultUsers = [];
+        })
     }
 
     handleReset = () => {
         const fireStore = getFirestore();
         let id = this.props.auth.uid;
+        console.log(id);
 
         testJson.users.forEach(wireFrameJson => {
-            
-            this.state.defaultUsers.push(id);
-
             fireStore.collection('users').doc(id).update({
                 key: wireFrameJson.key,
                 wireFrames: wireFrameJson.wireFrames,
